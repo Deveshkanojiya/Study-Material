@@ -1,0 +1,238 @@
+===============================
+MYSQL INDEXING – PRODUCTION NOTES
+===============================
+
+
+1. CARDINALITY
+
+Cardinality = number of unique values in a column.
+
+Example:
+Table rows = 10,000,000
+status has 4 unique values → cardinality = 4
+
+Higher cardinality → better index efficiency.
+
+
+2. SELECTIVITY
+
+Selectivity = Cardinality / Total Rows
+
+Closer to 1 → highly selective → index very effective
+Closer to 0 → low selectivity → index often ignored
+
+Example:
+5% rows match → index likely used
+70% rows match → full table scan often cheaper
+
+MySQL is cost-based. It chooses the cheaper plan.
+
+
+3. INNODB INDEX STRUCTURE
+
+Primary Key → Clustered Index
+Table data is physically stored in primary key B+Tree.
+
+Secondary Index stores:
+(index_column, primary_key)
+
+Secondary index does NOT store full row.
+
+So for SELECT *:
+Index lookup → then back-to-table lookup (random IO)
+
+
+4. BACK-TO-TABLE LOOKUP
+
+Steps:
+1. Use secondary index to find matching rows
+2. Get primary key
+3. Go to clustered index
+4. Fetch full row
+
+If 500,000 rows match → 500,000 random lookups
+
+Random IO is expensive.
+
+
+5. COVERING INDEX (INDEX-ONLY SCAN)
+
+If all required columns are inside the index,
+MySQL does NOT go back to table.
+
+Example:
+INDEX(status, user_id)
+
+Query:
+SELECT user_id FROM orders WHERE status='pending';
+
+Index already contains:
+(status, user_id, primary_key)
+
+No table lookup needed.
+
+EXPLAIN Extra:
+Using where; Using index
+
+
+6. SELECT * PROBLEM
+
+SELECT * forces table lookup unless index covers all columns.
+
+Problems:
+- More IO
+- More memory
+- Slower queries
+
+Never use SELECT * in production APIs.
+
+
+7. LEFTMOST PREFIX RULE
+
+For composite index (A, B, C):
+
+Index works for:
+WHERE A = ?
+WHERE A = ? AND B = ?
+WHERE A = ? AND B = ? AND C = ?
+
+Index does NOT work efficiently for:
+WHERE B = ?
+WHERE C = ?
+WHERE B = ? AND C = ?
+
+Order matters.
+
+
+8. WHEN MYSQL IGNORES INDEX
+
+Index may be ignored when:
+
+1. Low selectivity (too many rows match)
+2. Function applied on column
+   BAD:
+   WHERE YEAR(created_at) = 2025
+   GOOD:
+   WHERE created_at >= '2025-01-01'
+     AND created_at < '2026-01-01'
+
+3. Leading wildcard
+   BAD:
+   WHERE email LIKE '%gmail.com'
+   GOOD:
+   WHERE email LIKE 'dev%'
+
+4. Leftmost prefix rule violated
+5. Data type mismatch
+6. Complex OR conditions
+
+
+9. ACCESS TYPES (EXPLAIN type)
+
+Best → Worst:
+
+system
+const      (Primary key equality)
+eq_ref     (Unique join)
+ref        (Non-unique equality)
+range      (<, >, BETWEEN, LIKE 'abc%')
+index      (Full index scan)
+ALL        (Full table scan)
+
+ALL does NOT mean SELECT *.
+ALL means no efficient index path.
+
+
+10. KEY PRODUCTION INSIGHT
+
+Same index + same EXPLAIN type ≠ same performance.
+
+Performance depends on:
+- Number of rows matched
+- Random IO count
+- Covering vs non-covering
+- Data distribution
+
+
+11. INDEX TRADEOFF
+
+More columns in index:
++ Faster reads
+- Slower inserts/updates
+- Larger disk usage
+- Higher memory usage
+
+Always balance read vs write cost.
+
+
+===============================
+END OF INDEXING NOTES
+===============================
+
+
+
+===============================
+INDEXING – MERI BHASHA SUMMARY
+===============================
+
+1. Index ka kaam kya hai?
+Index basically shortcut hai.
+Pure table scan karne ki jagah direct required jagah pe jump karna.
+
+2. Kab index powerful hota hai?
+Jab kam rows match kare.
+5% rows → mast kaam karega.
+70% rows → index bekaar, full scan sasta padega.
+
+3. Secondary index kya store karta hai?
+Sirf (column, primary_key).
+Full row nahi hoti.
+Isliye SELECT * pe table lookup hota hai.
+
+4. Back-to-table lookup kya hai?
+Index se primary key milti hai,
+phir actual table me jaake full row uthani padti hai.
+Har match pe ek random jump.
+Ye mehenga hota hai.
+
+5. Covering index kya hai?
+Agar jo SELECT kar rahe ho woh sab index ke andar hi mil jaye,
+toh table pe jana hi nahi padta.
+Ye fastest case hai.
+
+6. SELECT * kyu dangerous hai?
+Kyuki almost hamesha table lookup karwata hai.
+Jitna kam data select karoge utna fast.
+
+7. Leftmost prefix rule yaad rakh:
+Index (A, B, C) hai toh
+A se start karna padega.
+B ya C se directly nahi chalega.
+
+8. Kab index ignore hota hai?
+- Jab bahut zyada rows match kare
+- Column pe function laga diya
+- LIKE '%abc' lagaya
+- Order galat diya composite index me
+- Type mismatch
+
+9. EXPLAIN ka type kya batata hai?
+Ye batata hai rows kaise access ho rahi hai.
+const → best
+ref → equality
+range → <, >, like 'abc%'
+ALL → full table scan (worst)
+
+10. Final production rule:
+Index laga dena enough nahi hai.
+Sochna padega:
+Kitni rows match karegi?
+Table lookup kitni baar hoga?
+Sequential scan sasta padega ya random IO?
+
+Database hamesha cheapest plan choose karta hai.
+Emotion se nahi, cost se chalta hai.
+
+===============================
+END
+===============================
