@@ -1,0 +1,82 @@
+=====================================================
+JAVA OOPS – POLYMORPHISM
+=====================================================
+
+
+=====================================================
+1) DEFINITION
+=====================================================
+
+Polymorphism = One name, many forms.
+
+Types:
+1) Compile-time Polymorphism (Method Overloading)
+2) Runtime Polymorphism (Method Overriding)
+
+
+=====================================================
+2) METHOD OVERLOADING
+=====================================================
+
+Same method name, different parameters.
+
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+
+Resolved at compile time.
+
+
+=====================================================
+3) METHOD OVERRIDING
+=====================================================
+
+Parent reference, child object.
+
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog bark");
+    }
+}
+
+Animal a = new Dog();
+a.sound();  // Dog bark
+
+Resolved at runtime.
+
+
+=====================================================
+4) DYNAMIC METHOD DISPATCH
+=====================================================
+
+Method call depends on OBJECT type, not reference type.
+
+Reference type decides:
+- Which methods are accessible.
+
+Object type decides:
+- Which overridden method runs.
+
+
+=====================================================
+5) IMPORTANT RULE
+=====================================================
+
+Variables:
+- Resolved at compile time (reference type).
+
+Methods:
+- Overridden methods resolved at runtime.
+
+
+=====================================================
+END OF FILE
+=====================================================

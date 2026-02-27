@@ -1,0 +1,211 @@
+=====================================================
+JAVA OOPS – CORE OBJECT MECHANICS
+(Class, Object, Memory, Constructor, this)
+=====================================================
+
+
+=====================================================
+1) CLASS
+=====================================================
+
+Definition:
+- Blueprint/template for creating objects.
+- Defines state (variables) and behavior (methods).
+- Does NOT create memory until object is instantiated.
+
+Example:
+
+class Student {
+    int roll;
+}
+
+Key Idea:
+Class describes WHAT an object looks like.
+
+
+=====================================================
+2) OBJECT
+=====================================================
+
+Definition:
+- Real instance of a class.
+- Created using "new" keyword.
+
+Example:
+
+Student s1 = new Student();
+
+Object Creation Steps:
+1. Memory allocated in HEAP.
+2. Instance variables get default values.
+3. Constructor runs.
+4. Reference stored in STACK.
+
+
+=====================================================
+3) MEMORY MODEL
+=====================================================
+
+STACK:
+- Local variables
+- Reference variables
+
+HEAP:
+- Objects
+- Instance variables
+
+Example:
+
+Student s1 = new Student();
+
+STACK:
+s1  ----> (address)
+
+HEAP:
+Student object
+roll = 0
+
+RULE:
+Object lives in Heap.
+Reference lives in Stack.
+
+
+=====================================================
+4) REFERENCE BEHAVIOR
+=====================================================
+
+Student s1 = new Student();
+Student s2 = s1;
+
+- Only ONE object created.
+- Two references pointing to same object.
+
+If:
+s1.roll = 10;
+
+Then:
+s2.roll = 10
+
+Because both reference same heap object.
+
+If:
+s1 = null;
+
+Object NOT destroyed if another reference exists.
+
+Object removed only when:
+No reference points to it (eligible for GC).
+
+
+=====================================================
+5) CONSTRUCTOR
+=====================================================
+
+Definition:
+- Special block that runs automatically when object is created.
+- Used to initialize object state.
+
+Rules:
+- Name same as class.
+- No return type.
+- Runs once per object.
+- Can be overloaded.
+
+Example:
+
+class Student {
+    int roll;
+
+    Student() {
+        roll = 10;
+    }
+}
+
+
+=====================================================
+6) DEFAULT CONSTRUCTOR RULE
+=====================================================
+
+If NO constructor written:
+-> Java provides default no-arg constructor.
+
+If ANY constructor written manually:
+-> Java does NOT provide default constructor.
+
+Example:
+
+class A {
+    A(int x) {}
+}
+
+new A();    -> Compile Error
+new A(5);   -> Works
+
+
+=====================================================
+7) CONSTRUCTOR OVERLOADING
+=====================================================
+
+Multiple constructors allowed with different parameters.
+
+class A {
+    A() {}
+    A(int x) {}
+}
+
+
+=====================================================
+8) CONSTRUCTOR CHAINING (this())
+=====================================================
+
+Used to call another constructor of same class.
+
+class Student {
+    int roll;
+
+    Student() {
+        this(0);
+    }
+
+    Student(int roll) {
+        this.roll = roll;
+    }
+}
+
+Rules:
+- this() must be FIRST line.
+- Only one this() allowed.
+- Chaining must end (avoid infinite recursion).
+
+
+=====================================================
+9) this KEYWORD (VARIABLE CONTEXT)
+=====================================================
+
+Problem (Shadowing):
+
+class Student {
+    int roll;
+
+    Student(int roll) {
+        roll = roll;   // Wrong
+    }
+}
+
+Correct:
+
+Student(int roll) {
+    this.roll = roll;
+}
+
+Meaning:
+Left side  -> Instance variable
+Right side -> Parameter
+
+this refers to CURRENT OBJECT.
+
+this cannot be used in static methods.
+
+=====================================================
+END OF FILE
+=====================================================

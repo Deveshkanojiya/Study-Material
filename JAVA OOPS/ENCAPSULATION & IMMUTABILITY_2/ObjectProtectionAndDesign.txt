@@ -1,0 +1,148 @@
+=====================================================
+JAVA OOPS – OBJECT PROTECTION & DESIGN
+(Encapsulation, Behavior Design, Immutability)
+=====================================================
+
+
+=====================================================
+1) ENCAPSULATION
+=====================================================
+
+Definition:
+- Hide internal data.
+- Expose controlled behavior.
+- Prevent invalid object state.
+
+Encapsulation = Protect Invariants.
+
+
+=====================================================
+2) WRONG DESIGN
+=====================================================
+
+class User {
+    public int age;
+}
+
+Problem:
+- Anyone can modify directly.
+- No validation.
+- Invalid state possible.
+
+
+=====================================================
+3) BASIC ENCAPSULATION
+=====================================================
+
+class User {
+    private int age;
+
+    public void setAge(int age) {
+        if(age > 0)
+            this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+Fields are private.
+Access controlled via methods.
+
+
+=====================================================
+4) REAL ENCAPSULATION (BEHAVIOR-BASED DESIGN)
+=====================================================
+
+Instead of:
+
+account.setBalance(1000);
+
+Better:
+
+account.deposit(1000);
+account.withdraw(500);
+
+Expose BEHAVIOR.
+Do not expose raw state mutation.
+
+
+=====================================================
+5) SENSITIVE DATA DESIGN
+=====================================================
+
+Weak:
+
+public void setPassword(String password);
+
+Strong:
+
+public void changePassword(String oldPassword, String newPassword);
+
+- Validate old password
+- Enforce rules
+- Hash internally
+- Prevent direct overwrite
+
+
+=====================================================
+6) IMMUTABILITY
+=====================================================
+
+Immutable Object:
+- State cannot change after creation.
+- No setters.
+- Fields are final.
+- Validation in constructor.
+
+Example:
+
+class User {
+    private final String email;
+
+    public User(String email) {
+        if(email == null || !email.contains("@"))
+            throw new IllegalArgumentException();
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+}
+
+Benefits:
+- Thread-safe
+- Predictable
+- No accidental mutation
+- No race condition
+
+
+=====================================================
+7) THREAD SAFETY INSIGHT
+=====================================================
+
+Race condition occurs when:
+read -> modify -> write
+is done by multiple threads.
+
+Mutable shared state = dangerous.
+Immutable shared state = safe.
+
+
+=====================================================
+8) DESIGN PRINCIPLES SUMMARY
+=====================================================
+
+1. Hide internal state.
+2. Validate inputs.
+3. Control state transitions.
+4. Avoid unnecessary setters.
+5. Prefer immutability where possible.
+6. Expose behavior, not raw data.
+
+
+=====================================================
+END OF FILE
+=====================================================

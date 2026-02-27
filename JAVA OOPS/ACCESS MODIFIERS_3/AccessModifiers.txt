@@ -1,0 +1,90 @@
+=====================================================
+JAVA OOPS – ACCESS MODIFIERS
+=====================================================
+
+Access Modifiers control visibility and accessibility.
+
+There are 4 types:
+
+1) private
+2) default (no keyword)
+3) protected
+4) public
+
+
+=====================================================
+1) private
+=====================================================
+
+- Accessible only inside same class.
+- Most restrictive.
+- Used for encapsulation.
+
+Example:
+
+class A {
+    private int x;
+}
+
+Cannot access x outside class A.
+
+
+=====================================================
+2) default (package-private)
+=====================================================
+
+- No keyword written.
+- Accessible within same package only.
+- Not accessible outside package.
+
+class A {
+    int x;   // default access
+}
+
+
+=====================================================
+3) protected
+=====================================================
+
+- Accessible within same package.
+- Accessible in subclasses (even in different package).
+- Not accessible by non-subclass outside package.
+
+
+=====================================================
+4) public
+=====================================================
+
+- Accessible everywhere.
+- Least restrictive.
+
+class A {
+    public int x;
+}
+
+
+=====================================================
+VISIBILITY TABLE
+=====================================================
+
+Modifier     Same Class   Same Package   Subclass   Other Package
+------------------------------------------------------------------
+private         YES           NO            NO           NO
+default         YES           YES           NO           NO
+protected       YES           YES           YES          NO*
+public          YES           YES           YES          YES
+
+*protected works in subclass even in different package.
+
+
+=====================================================
+DESIGN RULE
+=====================================================
+
+Default practice:
+- Fields -> private
+- Methods -> as restrictive as possible
+- Expose minimal surface area
+=====================================================
+END OF FILE
+=====================================================
