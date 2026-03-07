@@ -1,0 +1,230 @@
+=====================================
+EXPLAIN & EXPLAIN ANALYZE
+=====================================
+
+
+1. WHY EXPLAIN IS IMPORTANT
+
+EXPLAIN database ka execution plan dikhata hai.
+
+Matlab database query ko kaise execute karega.
+
+Example
+
+EXPLAIN
+SELECT *
+FROM users
+WHERE id = 10;
+
+Output batata hai
+
+kaunsa index use hua
+rows kaise scan ho rahi hain
+estimated cost kya hai
+
+
+-------------------------------------
+
+
+2. EXPLAIN VS EXPLAIN ANALYZE
+
+EXPLAIN
+
+sirf execution plan estimate karta hai.
+
+
+EXPLAIN ANALYZE
+
+query actually run karta hai
+aur real execution statistics show karta hai.
+
+
+Example
+
+EXPLAIN ANALYZE
+SELECT *
+FROM users
+WHERE id = 10;
+
+
+-------------------------------------
+
+
+3. BASIC EXPLAIN OUTPUT
+
+Typical output columns
+
+id
+select_type
+table
+type
+possible_keys
+key
+rows
+Extra
+
+
+-------------------------------------
+
+
+4. ACCESS TYPE (MOST IMPORTANT)
+
+Type column batata hai rows kaise access ho rahi hain.
+
+Best → Worst
+
+
+const
+
+Primary key equality
+
+Example
+
+WHERE id = 10
+
+
+ref
+
+Index lookup
+
+
+range
+
+Range scan
+
+Example
+
+price > 100
+
+
+index
+
+Full index scan
+
+
+ALL
+
+Full table scan
+
+
+Important
+
+ALL ka matlab hai database ko efficient index path nahi mila.
+
+
+-------------------------------------
+
+
+5. KEY COLUMN
+
+KEY batata hai kaunsa index use hua.
+
+Example
+
+key = idx_users_email
+
+
+-------------------------------------
+
+
+6. ROWS ESTIMATE
+
+Rows column batata hai database estimate karta hai
+kitni rows scan hongi.
+
+
+Example
+
+rows = 1000
+
+Matlab database soch raha hai 1000 rows read hongi.
+
+
+-------------------------------------
+
+
+7. EXTRA COLUMN
+
+Extra column additional info deta hai.
+
+Common values
+
+
+Using where
+
+rows filter ho rahi hain.
+
+
+Using index
+
+covering index use hua hai.
+
+
+Using temporary
+
+temporary table use hui hai.
+
+
+Using filesort
+
+sorting ho rahi hai.
+
+
+-------------------------------------
+
+
+8. INDEX NOT USED CASE
+
+Example
+
+SELECT *
+FROM users
+WHERE country = 'India';
+
+Agar 40% rows match karti hain
+
+Database full table scan choose kar sakta hai.
+
+
+-------------------------------------
+
+
+9. USING EXPLAIN FOR DEBUGGING
+
+Slow query detect karne ke liye
+
+EXPLAIN ANALYZE use karo.
+
+
+Example
+
+EXPLAIN ANALYZE
+SELECT *
+FROM orders
+WHERE status = 'pending';
+
+
+Check karo
+
+index use hua ya nahi
+rows kitni scan hui
+execution time kya hai
+
+
+-------------------------------------
+
+
+10. PRODUCTION INSIGHT
+
+Slow queries fix karne ka best tool
+
+EXPLAIN ANALYZE
+
+
+Har serious backend engineer ko
+execution plans read karna aana chahiye.
+
+
+=====================================
+END OF EXPLAIN NOTES
+=====================================
