@@ -1,0 +1,103 @@
+=====================================
+TRANSACTIONS
+=====================================
+
+
+1. WHAT IS A TRANSACTION
+
+Transaction ek group of operations hota hai
+jo ek unit ki tarah execute hota hai.
+
+
+-------------------------------------
+
+
+2. ACID PROPERTIES
+
+Atomicity
+
+all operations succeed
+ya sab fail
+
+
+Consistency
+
+database valid state me rehta hai.
+
+
+Isolation
+
+transactions ek dusre ko affect nahi karte.
+
+
+Durability
+
+committed data permanent hota hai.
+
+
+-------------------------------------
+
+
+3. TRANSACTION EXAMPLE
+
+START TRANSACTION;
+
+UPDATE accounts
+SET balance = balance - 100
+WHERE id = 1;
+
+UPDATE accounts
+SET balance = balance + 100
+WHERE id = 2;
+
+COMMIT;
+
+
+-------------------------------------
+
+
+4. ISOLATION LEVELS
+
+READ UNCOMMITTED
+
+dirty reads possible
+
+
+READ COMMITTED
+
+committed data hi visible
+
+
+REPEATABLE READ
+
+rows same rehte hain transaction me
+
+
+SERIALIZABLE
+
+highest isolation
+
+
+-------------------------------------
+
+
+5. COMMON PROBLEMS
+
+Dirty Read
+
+uncommitted data read
+
+
+Non Repeatable Read
+
+same query different results
+
+
+Phantom Read
+
+new rows appear
+
+
+=====================================
+END OF TRANSACTIONS
+=====================================

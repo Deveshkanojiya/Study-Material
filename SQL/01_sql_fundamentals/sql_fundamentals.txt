@@ -1,0 +1,314 @@
+=====================================
+SQL FUNDAMENTALS
+=====================================
+
+
+1. WHAT IS SQL
+
+SQL (Structured Query Language) ek language hai jo database se data
+read, insert, update aur delete karne ke liye use hoti hai.
+
+Simple language me:
+
+SQL ka matlab hai database ko instructions dena.
+
+Example:
+
+SELECT name FROM users;
+
+Iska matlab:
+users table se name column dikhao.
+
+
+-------------------------------------
+
+
+2. DATABASE VS TABLE
+
+Database
+
+Database ek container hota hai jisme tables stored hote hain.
+
+
+Example
+
+database = ecommerce
+
+
+Tables
+
+users
+orders
+products
+payments
+
+
+-------------------------------------
+
+
+3. TABLE STRUCTURE
+
+Table rows aur columns se banti hai.
+
+Example
+
+users table
+
+id      name       email
+1       Rahul      rahul@gmail.com
+2       Aman       aman@gmail.com
+3       Neha       neha@gmail.com
+
+
+Row = ek record
+
+Column = ek attribute
+
+
+-------------------------------------
+
+
+4. SELECT
+
+SELECT ka use data retrieve karne ke liye hota hai.
+
+Example
+
+SELECT name FROM users;
+
+
+Result
+
+Rahul
+Aman
+Neha
+
+
+Multiple columns
+
+SELECT name, email FROM users;
+
+
+-------------------------------------
+
+
+5. SELECT *
+
+SELECT * ka matlab hai table ke saare columns fetch karo.
+
+Example
+
+SELECT * FROM users;
+
+
+Production rule
+
+SELECT * avoid karo.
+
+Sirf required columns hi select karo.
+
+Reason
+
+extra memory
+extra network transfer
+slower queries
+
+
+-------------------------------------
+
+
+6. WHERE
+
+WHERE clause rows filter karta hai.
+
+Example
+
+SELECT name
+FROM users
+WHERE id = 1;
+
+
+Result
+
+Rahul
+
+
+-------------------------------------
+
+
+7. COMPARISON OPERATORS
+
+=   equal
+!=  not equal
+>   greater than
+<   less than
+>=  greater or equal
+<=  less or equal
+
+
+Example
+
+SELECT * FROM products
+WHERE price > 1000;
+
+
+-------------------------------------
+
+
+8. AND / OR
+
+Multiple conditions use kar sakte hain.
+
+Example
+
+SELECT *
+FROM users
+WHERE city='Delhi'
+AND age > 25;
+
+
+OR example
+
+SELECT *
+FROM users
+WHERE city='Delhi'
+OR city='Mumbai';
+
+
+-------------------------------------
+
+
+9. IN
+
+IN multiple values match karta hai.
+
+Example
+
+SELECT *
+FROM users
+WHERE city IN ('Delhi','Mumbai');
+
+
+Same as
+
+city='Delhi' OR city='Mumbai'
+
+
+-------------------------------------
+
+
+10. BETWEEN
+
+Range queries ke liye use hota hai.
+
+Example
+
+SELECT *
+FROM products
+WHERE price BETWEEN 500 AND 1000;
+
+
+-------------------------------------
+
+
+11. LIKE
+
+Pattern search ke liye use hota hai.
+
+Example
+
+SELECT *
+FROM users
+WHERE email LIKE 'dev%';
+
+
+Meaning
+
+email dev se start hona chahiye.
+
+
+Wildcards
+
+% → any characters
+
+_ → single character
+
+
+Example
+
+LIKE '%gmail.com'
+
+
+-------------------------------------
+
+
+12. ORDER BY
+
+ORDER BY results ko sort karta hai.
+
+Example
+
+SELECT *
+FROM products
+ORDER BY price;
+
+
+Ascending
+
+ORDER BY price ASC
+
+
+Descending
+
+ORDER BY price DESC
+
+
+-------------------------------------
+
+
+13. LIMIT
+
+LIMIT rows restrict karta hai.
+
+Example
+
+SELECT *
+FROM users
+LIMIT 5;
+
+
+Meaning
+
+sirf 5 rows return karo.
+
+
+-------------------------------------
+
+
+14. DISTINCT
+
+DISTINCT duplicate values remove karta hai.
+
+Example
+
+SELECT DISTINCT city
+FROM users;
+
+
+-------------------------------------
+
+
+15. PRODUCTION INSIGHT
+
+SQL likhte time hamesha socho:
+
+kitni rows read hongi
+kitni rows return hongi
+index use hoga ya nahi
+
+Database hamesha cheapest plan choose karta hai.
+
+
+=====================================
+END OF SQL FUNDAMENTALS
+=====================================

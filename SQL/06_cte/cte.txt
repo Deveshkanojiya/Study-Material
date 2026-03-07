@@ -1,0 +1,103 @@
+=====================================
+COMMON TABLE EXPRESSIONS (CTE)
+=====================================
+
+
+1. WHAT IS A CTE
+
+CTE ka matlab hai temporary result set jo ek query ke andar use hota hai.
+
+Syntax
+
+WITH temp_table AS (
+query
+)
+SELECT *
+FROM temp_table;
+
+
+-------------------------------------
+
+
+2. BASIC EXAMPLE
+
+WITH avg_sal AS (
+SELECT AVG(salary) AS avg_salary
+FROM employees
+)
+SELECT *
+FROM employees
+WHERE salary > (SELECT avg_salary FROM avg_sal);
+
+
+-------------------------------------
+
+
+3. MULTIPLE CTE
+
+Multiple steps ko readable banane ke liye.
+
+Example
+
+WITH dept_avg AS (
+SELECT dept, AVG(salary) avg_salary
+FROM employees
+GROUP BY dept
+),
+high_salary AS (
+SELECT *
+FROM employees
+WHERE salary > 100
+)
+SELECT *
+FROM high_salary;
+
+
+-------------------------------------
+
+
+4. CTE VS SUBQUERY
+
+Subquery
+
+simple case
+
+
+CTE
+
+complex multi-step queries
+
+
+Example
+
+analytics queries
+report queries
+
+
+-------------------------------------
+
+
+5. RECURSIVE CTE
+
+Recursive queries ke liye use hota hai.
+
+Example
+
+hierarchical data
+
+employee manager structure
+
+
+-------------------------------------
+
+
+6. PRODUCTION INSIGHT
+
+CTE queries ko readable banata hai.
+
+Large queries ko step-by-step break karne me help karta hai.
+
+
+=====================================
+END OF CTE
+=====================================

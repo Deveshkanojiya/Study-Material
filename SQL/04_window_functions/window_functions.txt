@@ -1,0 +1,187 @@
+=====================================
+SQL AGGREGATIONS
+=====================================
+
+
+1. WHAT IS AGGREGATION
+
+Aggregation ka matlab hai multiple rows ko combine karke ek result banana.
+
+Example
+
+count
+sum
+avg
+max
+min
+
+
+-------------------------------------
+
+
+2. COUNT
+
+COUNT rows count karta hai.
+
+Example
+
+SELECT COUNT(*)
+FROM users;
+
+
+Result
+
+Total number of users.
+
+
+-------------------------------------
+
+
+3. SUM
+
+SUM numeric column ka total nikalta hai.
+
+Example
+
+SELECT SUM(price)
+FROM orders;
+
+
+-------------------------------------
+
+
+4. AVG
+
+Average calculate karta hai.
+
+Example
+
+SELECT AVG(price)
+FROM products;
+
+
+-------------------------------------
+
+
+5. MAX / MIN
+
+MAX highest value return karta hai.
+
+Example
+
+SELECT MAX(price)
+FROM products;
+
+
+MIN lowest value return karta hai.
+
+
+-------------------------------------
+
+
+6. GROUP BY
+
+GROUP BY rows ko groups me divide karta hai.
+
+Example
+
+orders table
+
+id    user_id   price
+1     1         100
+2     1         200
+3     2         150
+
+
+Query
+
+SELECT user_id, SUM(price)
+FROM orders
+GROUP BY user_id;
+
+
+Result
+
+user_id    total
+1          300
+2          150
+
+
+-------------------------------------
+
+
+7. HAVING
+
+HAVING aggregated results filter karta hai.
+
+Example
+
+SELECT user_id, SUM(price) AS total
+FROM orders
+GROUP BY user_id
+HAVING total > 200;
+
+
+-------------------------------------
+
+
+8. WHERE VS HAVING
+
+WHERE
+
+filter before aggregation
+
+
+HAVING
+
+filter after aggregation
+
+
+Example
+
+SELECT user_id, SUM(price)
+FROM orders
+WHERE price > 100
+GROUP BY user_id;
+
+
+-------------------------------------
+
+
+9. PRODUCTION INSIGHT
+
+Aggregation queries expensive ho sakti hain.
+
+Large tables pe:
+
+sorting
+temporary tables
+memory usage
+
+
+Indexes help kar sakte hain.
+
+
+-------------------------------------
+
+
+10. COMMON PROBLEMS
+
+Top selling products
+
+SELECT product_id, COUNT(*)
+FROM orders
+GROUP BY product_id
+ORDER BY COUNT(*) DESC;
+
+
+Department salary totals
+
+SELECT dept, SUM(salary)
+FROM employees
+GROUP BY dept;
+
+
+=====================================
+END OF AGGREGATIONS
+=====================================

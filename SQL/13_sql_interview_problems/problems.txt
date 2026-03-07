@@ -1,0 +1,96 @@
+=====================================
+SQL INTERVIEW PROBLEMS
+=====================================
+
+
+1. SECOND HIGHEST SALARY
+
+SELECT MAX(salary)
+FROM employees
+WHERE salary <
+(
+SELECT MAX(salary)
+FROM employees
+);
+
+
+-------------------------------------
+
+
+2. EMPLOYEES ABOVE AVERAGE SALARY
+
+SELECT *
+FROM employees
+WHERE salary >
+(
+SELECT AVG(salary)
+FROM employees
+);
+
+
+-------------------------------------
+
+
+3. EMPLOYEES ABOVE DEPARTMENT AVERAGE
+
+SELECT name
+FROM employees e1
+WHERE salary >
+(
+SELECT AVG(salary)
+FROM employees e2
+WHERE e2.dept = e1.dept
+);
+
+
+-------------------------------------
+
+
+4. TOP N PER GROUP
+
+SELECT *
+FROM (
+SELECT name, dept, salary,
+ROW_NUMBER() OVER(PARTITION BY dept ORDER BY salary DESC) rn
+FROM employees
+) t
+WHERE rn = 1;
+
+
+-------------------------------------
+
+
+5. CUSTOMERS WITH NO ORDERS
+
+SELECT *
+FROM customers c
+LEFT JOIN orders o
+ON c.id = o.customer_id
+WHERE o.id IS NULL;
+
+
+-------------------------------------
+
+
+6. TOTAL ORDERS PER USER
+
+SELECT user_id, COUNT(*)
+FROM orders
+GROUP BY user_id;
+
+
+-------------------------------------
+
+
+7. MOST SOLD PRODUCT
+
+SELECT product_id, COUNT(*) AS total
+FROM orders
+GROUP BY product_id
+ORDER BY total DESC
+LIMIT 1;
+
+
+=====================================
+END OF SQL INTERVIEW PROBLEMS
+=====================================

@@ -1,0 +1,499 @@
+=====================================
+MYSQL INDEXING – PRODUCTION NOTES
+=====================================
+
+
+1. WHAT IS AN INDEX
+
+Index ek data structure hota hai jo database ko rows fast find
+karne me help karta hai.
+
+Simple language me:
+
+Index basically shortcut hai.
+
+Without index
+
+Database ko pura table scan karna padta hai.
+
+
+Example
+
+Table rows = 10,000,000
+
+Query
+
+SELECT * FROM users WHERE email='dev@gmail.com'
+
+
+Without index
+
+Database 10M rows check karega.
+
+
+With index
+
+Database directly us row pe jump karega.
+
+
+-------------------------------------
+
+
+2. CARDINALITY
+
+Cardinality ka matlab hai:
+
+column me kitne unique values hain.
+
+Example
+
+Table rows = 10,000,000
+
+status values
+
+pending
+paid
+failed
+cancelled
+
+
+Unique values = 4
+
+Cardinality = 4
+
+
+High cardinality → better index efficiency.
+
+
+Example
+
+email column
+
+10M rows
+10M unique values
+
+Very high cardinality.
+
+
+-------------------------------------
+
+
+3. SELECTIVITY
+
+Selectivity = Cardinality / Total Rows
+
+Simple language
+
+query kitni rows match karegi.
+
+Example
+
+Table rows = 1,000,000
+
+Query matches = 5,000 rows
+
+Selectivity = 0.005
+
+
+Bahut accha case.
+
+
+Example
+
+Query matches = 700,000 rows
+
+Selectivity = 0.7
+
+
+Index useless ho sakta hai.
+
+
+General rule
+
+1–5% rows match → index powerful  
+10–20% rows → maybe useful  
+30%+ rows → full table scan cheaper
+
+
+Important
+
+MySQL cost-based optimizer hai.
+
+Database hamesha cheapest plan choose karta hai.
+
+
+-------------------------------------
+
+
+4. INNODB INDEX STRUCTURE
+
+InnoDB B+Tree index use karta hai.
+
+
+Primary Key = Clustered Index
+
+
+Matlab
+
+table ka actual data primary key tree ke andar store hota hai.
+
+
+Example
+
+PRIMARY KEY(id)
+
+
+Tree nodes me full rows stored hoti hain.
+
+
+Secondary Index structure
+
+(index_column, primary_key)
+
+
+Example
+
+INDEX(email)
+
+
+Stored values
+
+(email, id)
+
+
+Important
+
+Secondary index me full row nahi hoti.
+
+
+-------------------------------------
+
+
+5. BACK TO TABLE LOOKUP
+
+Jab secondary index use hota hai toh database ko table
+me wapas jaana padta hai.
+
+Isko bolte hain:
+
+Back-to-table lookup.
+
+
+Steps
+
+1. Secondary index search karo  
+2. Primary key milti hai  
+3. Clustered index pe jao  
+4. Full row fetch karo  
+
+
+Example
+
+SELECT * FROM users WHERE email='dev@gmail.com'
+
+
+Execution
+
+index(email) lookup  
+→ primary key milti hai  
+→ table me jaake row fetch hoti hai
+
+
+Agar 500,000 rows match karein
+
+500,000 random lookups honge.
+
+
+Random IO expensive hota hai.
+
+
+-------------------------------------
+
+
+6. COVERING INDEX (INDEX ONLY SCAN)
+
+Agar required columns index ke andar hi mil jayein
+toh database ko table pe jaana nahi padta.
+
+
+Example
+
+INDEX(status, user_id)
+
+
+Query
+
+SELECT user_id
+FROM orders
+WHERE status='pending'
+
+
+Index already contains
+
+(status, user_id, primary_key)
+
+
+Database directly index se result return kar deta hai.
+
+
+EXPLAIN Extra
+
+Using where; Using index
+
+
+Ye fastest case hota hai.
+
+
+-------------------------------------
+
+
+7. SELECT * PROBLEM
+
+SELECT * almost hamesha table lookup karwata hai.
+
+Problems
+
+extra IO  
+extra memory usage  
+extra network transfer  
+
+
+Production rule
+
+APIs me SELECT * avoid karo.
+
+Sirf required columns hi select karo.
+
+
+-------------------------------------
+
+
+8. COMPOSITE INDEX
+
+Composite index me multiple columns hote hain.
+
+Example
+
+INDEX(user_id, status)
+
+
+Ye queries fast bana sakta hai
+jab multiple filters ho.
+
+
+-------------------------------------
+
+
+9. LEFTMOST PREFIX RULE
+
+Composite index ka order important hota hai.
+
+
+Example
+
+INDEX(A, B, C)
+
+
+Index work karega
+
+WHERE A = ?
+
+WHERE A = ? AND B = ?
+
+WHERE A = ? AND B = ? AND C = ?
+
+
+Also works
+
+WHERE A = ? AND B > ?
+
+
+Index efficiently work nahi karega
+
+WHERE B = ?
+
+WHERE C = ?
+
+WHERE B = ? AND C = ?
+
+
+Rule
+
+Composite index hamesha left se start hota hai.
+
+
+-------------------------------------
+
+
+10. WHEN MYSQL IGNORES INDEX
+
+Kuch cases me MySQL index use nahi karta.
+
+
+1. Low selectivity
+
+Example
+
+gender column
+
+50% male
+
+
+2. Column pe function use kiya
+
+
+BAD
+
+WHERE YEAR(created_at)=2025
+
+
+GOOD
+
+WHERE created_at >= '2025-01-01'
+AND created_at < '2026-01-01'
+
+
+3. Leading wildcard
+
+
+BAD
+
+LIKE '%gmail.com'
+
+
+GOOD
+
+LIKE 'dev%'
+
+
+4. Leftmost prefix rule break hua
+
+
+5. Data type mismatch
+
+
+Example
+
+column INT
+
+query me string use
+
+
+6. Complex OR conditions
+
+
+-------------------------------------
+
+
+11. EXPLAIN ACCESS TYPES
+
+EXPLAIN batata hai rows kaise access ho rahi hain.
+
+
+Best → Worst
+
+
+system  
+const  
+eq_ref  
+ref  
+range  
+index  
+ALL  
+
+
+Meaning
+
+
+const
+
+Primary key equality
+
+Example
+
+WHERE id = 10
+
+
+eq_ref
+
+Unique join lookup
+
+
+ref
+
+Non-unique index lookup
+
+
+range
+
+Range scan
+
+< > BETWEEN LIKE 'abc%'
+
+
+index
+
+Full index scan
+
+
+ALL
+
+Full table scan
+
+
+Important
+
+ALL ka matlab SELECT * nahi hota.
+
+ALL ka matlab hai
+
+efficient index path nahi mila.
+
+
+-------------------------------------
+
+
+12. INDEX TRADEOFF
+
+Indexes read speed badhate hain
+lekin writes slow kar dete hain.
+
+
+More indexes
+
++ Faster SELECT
+
+- Slower INSERT
+- Slower UPDATE
+- Slower DELETE
+
+
+Reason
+
+Har data change pe indexes bhi update hote hain.
+
+
+-------------------------------------
+
+
+13. FINAL PRODUCTION INSIGHT
+
+Same index hone ka matlab same performance nahi hota.
+
+
+Performance depend karta hai
+
+kitni rows match kar rahi hain  
+random IO kitna ho raha hai  
+covering index hai ya nahi  
+data distribution kaisa hai  
+
+
+Database emotion se decision nahi leta.
+
+Optimizer hamesha cheapest plan choose karta hai.
+
+
+=====================================
+END OF INDEXING NOTES
+=====================================

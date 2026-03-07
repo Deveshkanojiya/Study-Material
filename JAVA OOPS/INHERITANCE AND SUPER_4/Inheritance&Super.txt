@@ -1,0 +1,180 @@
+=====================================================
+JAVA OOPS – INHERITANCE & SUPER
+=====================================================
+
+
+=====================================================
+1) INHERITANCE
+=====================================================
+
+Definition:
+- One class acquiring properties and behavior of another class.
+- Promotes code reuse.
+- Represents IS-A relationship.
+
+Syntax:
+
+class Parent {
+    void display() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+}
+
+
+Example:
+
+Child c = new Child();
+c.display();  // Inherited from Parent
+
+
+=====================================================
+2) WHY INHERITANCE EXISTS
+=====================================================
+
+Problem:
+- Code duplication across similar classes.
+
+Solution:
+- Put common logic in parent class.
+- Child classes extend it.
+
+
+=====================================================
+3) METHOD OVERRIDING
+=====================================================
+
+Definition:
+- Child class provides its own implementation of parent method.
+
+Example:
+
+class Parent {
+    void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child");
+    }
+}
+
+Rules:
+- Same method name
+- Same parameters
+- Cannot reduce access modifier
+- Cannot override final method
+- Return type must be same (or covariant)
+
+
+=====================================================
+4) super KEYWORD
+=====================================================
+
+super refers to immediate parent class.
+
+Uses:
+
+1) Access parent variable
+2) Call parent method
+3) Call parent constructor
+
+
+-----------------------------------------------------
+A) Access Parent Variable
+-----------------------------------------------------
+
+class Parent {
+    int x = 10;
+}
+
+class Child extends Parent {
+    int x = 20;
+
+    void print() {
+        System.out.println(super.x);  // 10
+    }
+}
+
+
+-----------------------------------------------------
+B) Call Parent Method
+-----------------------------------------------------
+
+class Parent {
+    void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    void show() {
+        super.show();   // calls Parent show()
+        System.out.println("Child");
+    }
+}
+
+
+-----------------------------------------------------
+C) Call Parent Constructor
+-----------------------------------------------------
+
+class Parent {
+    Parent() {
+        System.out.println("Parent Constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        super();  // Must be first line
+        System.out.println("Child Constructor");
+    }
+}
+
+
+=====================================================
+5) CONSTRUCTOR CALL ORDER
+=====================================================
+
+When creating Child object:
+
+Child c = new Child();
+
+Execution order:
+1. Parent constructor
+2. Child constructor
+
+If super() not written:
+-> Java inserts it automatically.
+
+
+=====================================================
+6) IMPORTANT RULES
+=====================================================
+
+- super() must be first line in constructor.
+- this() and super() cannot both be used in same constructor.
+- Parent constructor always runs before child constructor.
+
+
+=====================================================
+7) MULTILEVEL INHERITANCE
+=====================================================
+
+class A { }
+class B extends A { }
+class C extends B { }
+
+Constructor order:
+A -> B -> C
+
+
+=====================================================
+END OF FILE
+=====================================================

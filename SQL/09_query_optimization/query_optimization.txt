@@ -1,0 +1,103 @@
+=====================================
+QUERY OPTIMIZATION
+=====================================
+
+
+1. WHAT IS QUERY OPTIMIZATION
+
+Query optimization ka matlab hai
+query ko faster banana.
+
+
+-------------------------------------
+
+
+2. USE INDEXES
+
+Indexes search operations fast banate hain.
+
+Example
+
+INDEX(email)
+
+
+-------------------------------------
+
+
+3. AVOID SELECT *
+
+Sirf required columns select karo.
+
+Example
+
+SELECT name
+FROM users;
+
+
+-------------------------------------
+
+
+4. LIMIT RESULT SIZE
+
+Example
+
+SELECT *
+FROM orders
+LIMIT 10;
+
+
+-------------------------------------
+
+
+5. USE PROPER FILTERING
+
+Indexes tab best kaam karte hain
+jab filter selective ho.
+
+
+-------------------------------------
+
+
+6. AVOID FUNCTIONS ON INDEXED COLUMNS
+
+BAD
+
+WHERE YEAR(created_at)=2025
+
+
+GOOD
+
+WHERE created_at >= '2025-01-01'
+
+
+-------------------------------------
+
+
+7. USE COVERING INDEX
+
+Agar query ke required columns index me ho
+toh performance improve hoti hai.
+
+
+-------------------------------------
+
+
+8. OPTIMIZE JOINS
+
+Join columns pe index hona chahiye.
+
+
+-------------------------------------
+
+
+9. ANALYZE SLOW QUERIES
+
+Tools
+
+EXPLAIN
+EXPLAIN ANALYZE
+
+
+=====================================
+END OF QUERY OPTIMIZATION
+=====================================

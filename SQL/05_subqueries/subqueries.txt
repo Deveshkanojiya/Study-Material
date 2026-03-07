@@ -1,0 +1,139 @@
+=====================================
+SUBQUERIES
+=====================================
+
+
+1. WHAT IS A SUBQUERY
+
+Subquery ka matlab hai query ke andar ek aur query.
+
+Example
+
+SELECT *
+FROM employees
+WHERE salary >
+(
+SELECT AVG(salary)
+FROM employees
+);
+
+
+Inner query average salary return karti hai.
+
+
+-------------------------------------
+
+
+2. SCALAR SUBQUERY
+
+Scalar subquery ek single value return karta hai.
+
+Example
+
+SELECT *
+FROM employees
+WHERE salary >
+(
+SELECT AVG(salary)
+FROM employees
+);
+
+
+-------------------------------------
+
+
+3. IN SUBQUERY
+
+Multiple values ke liye use hota hai.
+
+Example
+
+SELECT *
+FROM employees
+WHERE dept_id IN
+(
+SELECT id
+FROM departments
+WHERE city='Delhi'
+);
+
+
+-------------------------------------
+
+
+4. EXISTS
+
+EXISTS check karta hai row exist karti hai ya nahi.
+
+Example
+
+SELECT *
+FROM customers c
+WHERE EXISTS
+(
+SELECT 1
+FROM orders o
+WHERE o.customer_id = c.id
+);
+
+
+-------------------------------------
+
+
+5. CORRELATED SUBQUERY
+
+Correlated subquery outer query ke row pe depend karti hai.
+
+Example
+
+SELECT name
+FROM employees e1
+WHERE salary >
+(
+SELECT AVG(salary)
+FROM employees e2
+WHERE e2.dept = e1.dept
+);
+
+
+Yeh department average se zyada salary wale employees return karega.
+
+
+-------------------------------------
+
+
+6. SUBQUERY VS JOIN
+
+Kabhi subquery ko join me convert kar sakte hain.
+
+Example
+
+SELECT e.name
+FROM employees e
+JOIN (
+SELECT dept, AVG(salary) avg_salary
+FROM employees
+GROUP BY dept
+) d
+ON e.dept = d.dept
+WHERE e.salary > d.avg_salary;
+
+
+-------------------------------------
+
+
+7. PRODUCTION INSIGHT
+
+Subqueries useful hain:
+
+filters
+comparisons
+existence checks
+
+
+Lekin kabhi join rewrite faster hota hai.
+
+
+=====================================
+END OF SUBQUERIES
+=====================================

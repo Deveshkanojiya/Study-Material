@@ -1,0 +1,122 @@
+=====================================================
+JAVA CONCURRENCY – BASICS
+=====================================================
+
+
+=====================================================
+1) PROBLEM: RACE CONDITION
+=====================================================
+
+Occurs when multiple threads modify shared state.
+
+Example:
+
+balance += amount;
+
+Internally:
+1. Read balance
+2. Add amount
+3. Write balance
+
+Multiple threads -> inconsistent result.
+
+
+=====================================================
+2) synchronized KEYWORD
+=====================================================
+
+Ensures only one thread executes block at a time.
+
+Method level:
+
+public synchronized void deposit(double amount) {
+    balance += amount;
+}
+
+Block level:
+
+public void deposit(double amount) {
+    synchronized(this) {
+        balance += amount;
+    }
+}
+
+Locks on object monitor.
+
+
+=====================================================
+3) STATIC synchronized
+=====================================================
+
+Locks on Class object.
+
+public static synchronized void test() { }
+
+
+=====================================================
+4) ATOMIC TYPES
+=====================================================
+
+Located in:
+java.util.concurrent.atomic
+
+Examples:
+- AtomicInteger
+- AtomicLong
+
+Example:
+
+AtomicInteger count = new AtomicInteger(0);
+count.incrementAndGet();
+
+Atomic operations avoid race condition without synchronized.
+
+
+=====================================================
+5) LOCKING MECHANISM (ReentrantLock)
+=====================================================
+
+More flexible than synchronized.
+
+Example:
+
+Lock lock = new ReentrantLock();
+
+lock.lock();
+try {
+    balance += amount;
+} finally {
+    lock.unlock();
+}
+
+Features:
+- Manual lock/unlock
+- Try lock
+- Fair locking option
+
+
+=====================================================
+6) IMMUTABILITY & THREAD SAFETY
+=====================================================
+
+Immutable objects:
+- No shared mutable state
+- Naturally thread-safe
+
+
+=====================================================
+7) IMPORTANT RULE
+=====================================================
+
+Mutable shared state + multiple threads = danger.
+
+Fix using:
+- synchronized
+- Atomic classes
+- Locks
+- Immutability
+
+
+=====================================================
+END OF FILE
+=====================================================

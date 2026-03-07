@@ -1,0 +1,74 @@
+=====================================
+JOIN EXECUTION ALGORITHMS
+=====================================
+
+
+1. NESTED LOOP JOIN
+
+Har row ke liye inner table search hota hai.
+
+Example
+
+FOR each user
+search orders
+
+
+Best case
+
+small table
+index available
+
+
+-------------------------------------
+
+
+2. HASH JOIN
+
+Small table se hash table banate hain.
+
+Phir large table scan karke
+hash lookup karte hain.
+
+
+Use case
+
+large tables
+no index
+
+
+-------------------------------------
+
+
+3. MERGE JOIN
+
+Sorted tables ko merge karke join karte hain.
+
+Best case
+
+sorted inputs
+indexes present
+
+
+-------------------------------------
+
+
+4. PLANNER DECISION
+
+Nested Loop
+
+small table + index
+
+
+Hash Join
+
+large tables + no index
+
+
+Merge Join
+
+sorted inputs
+
+
+=====================================
+END OF JOIN EXECUTION
+=====================================

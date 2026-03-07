@@ -1,0 +1,89 @@
+=====================================
+PAGINATION
+=====================================
+
+
+1. WHAT IS PAGINATION
+
+Pagination large result sets ko small pages me divide karta hai.
+
+Example
+
+Page 1 → first 10 rows
+Page 2 → next 10 rows
+
+
+-------------------------------------
+
+
+2. OFFSET PAGINATION
+
+Example
+
+SELECT *
+FROM users
+ORDER BY id
+LIMIT 10 OFFSET 20;
+
+
+Meaning
+
+20 rows skip karo
+next 10 return karo.
+
+
+-------------------------------------
+
+
+3. OFFSET PROBLEM
+
+Large offset slow hota hai.
+
+Example
+
+OFFSET 900000
+
+Database ko pehle 900000 rows read karni padti hain.
+
+
+-------------------------------------
+
+
+4. KEYSET PAGINATION
+
+Better approach.
+
+Example
+
+SELECT *
+FROM users
+WHERE id > 20
+ORDER BY id
+LIMIT 10;
+
+
+-------------------------------------
+
+
+5. CURSOR PAGINATION
+
+API cursor use karti hai.
+
+Example
+
+GET /users?cursor=20
+
+
+-------------------------------------
+
+
+6. PRODUCTION INSIGHT
+
+Small datasets → OFFSET ok
+
+Large datasets → keyset pagination
+
+
+=====================================
+END OF PAGINATION
+=====================================

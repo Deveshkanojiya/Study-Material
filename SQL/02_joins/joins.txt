@@ -1,0 +1,233 @@
+=====================================
+SQL JOINS
+=====================================
+
+
+1. WHAT IS A JOIN
+
+Join ka use multiple tables ka data combine karne ke liye hota hai.
+
+Real production databases me data alag-alag tables me stored hota hai.
+
+Example
+
+users table
+
+id    name
+1     Rahul
+2     Aman
+
+
+orders table
+
+id    user_id    product
+1     1          Phone
+2     1          Laptop
+3     2          Shoes
+
+
+Agar hume user name + order chahiye toh join use karte hain.
+
+
+-------------------------------------
+
+
+2. INNER JOIN
+
+Inner join sirf matching rows return karta hai.
+
+Example
+
+SELECT users.name, orders.product
+FROM users
+INNER JOIN orders
+ON users.id = orders.user_id;
+
+
+Result
+
+Rahul   Phone
+Rahul   Laptop
+Aman    Shoes
+
+
+Simple language
+
+Inner join ka matlab hai:
+
+sirf wahi rows lao jahan match mile.
+
+
+-------------------------------------
+
+
+3. LEFT JOIN
+
+Left join left table ki saari rows return karta hai,
+chahe right table me match ho ya na ho.
+
+Example
+
+users
+
+id   name
+1    Rahul
+2    Aman
+3    Neha
+
+
+orders
+
+id   user_id   product
+1    1         Phone
+2    2         Shoes
+
+
+Query
+
+SELECT users.name, orders.product
+FROM users
+LEFT JOIN orders
+ON users.id = orders.user_id;
+
+
+Result
+
+Rahul   Phone
+Aman    Shoes
+Neha    NULL
+
+
+Simple language
+
+Left table ke sab rows aayenge.
+
+
+-------------------------------------
+
+
+4. RIGHT JOIN
+
+Right join right table ki saari rows return karta hai.
+
+Production me rarely use hota hai.
+
+Example
+
+SELECT users.name, orders.product
+FROM users
+RIGHT JOIN orders
+ON users.id = orders.user_id;
+
+
+-------------------------------------
+
+
+5. JOIN CONDITIONS
+
+Join condition batata hai rows kaise match hongi.
+
+Example
+
+ON users.id = orders.user_id
+
+
+Agar join condition galat ho toh result wrong hoga.
+
+
+-------------------------------------
+
+
+6. MULTIPLE JOINS
+
+Multiple tables join kar sakte hain.
+
+Example
+
+users
+orders
+products
+
+
+Query
+
+SELECT users.name, products.title
+FROM users
+JOIN orders ON users.id = orders.user_id
+JOIN products ON orders.product_id = products.id;
+
+
+-------------------------------------
+
+
+7. COMMON JOIN MISTAKE
+
+Join without condition.
+
+
+BAD
+
+SELECT *
+FROM users
+JOIN orders;
+
+
+Isse cartesian product banega.
+
+Example
+
+10 users × 100 orders = 1000 rows.
+
+
+-------------------------------------
+
+
+8. JOIN PERFORMANCE
+
+Join performance depend karta hai:
+
+index
+table size
+join condition
+
+
+Production rule
+
+Join columns pe index hona chahiye.
+
+
+Example
+
+INDEX(orders.user_id)
+
+
+-------------------------------------
+
+
+9. JOIN EXECUTION INSIGHT
+
+Database joins ko internally execute karta hai using algorithms:
+
+Nested Loop Join
+Hash Join
+Merge Join
+
+
+Nested Loop
+
+Small table + index
+
+
+Hash Join
+
+Large tables + no index
+
+
+Merge Join
+
+Sorted inputs
+
+
+=====================================
+END OF JOINS
+=====================================

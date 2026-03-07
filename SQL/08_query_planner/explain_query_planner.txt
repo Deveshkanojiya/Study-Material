@@ -1,0 +1,133 @@
+=====================================
+QUERY PLANNER & EXPLAIN
+=====================================
+
+
+1. WHAT IS QUERY PLANNER
+
+Query planner database ka internal component hota hai
+jo decide karta hai query kaise execute hogi.
+
+Example decisions
+
+index use kare ya nahi
+table scan kare ya nahi
+kaunsa join algorithm use kare
+
+
+Database multiple execution plans evaluate karta hai
+aur cheapest plan choose karta hai.
+
+
+-------------------------------------
+
+
+2. EXPLAIN
+
+EXPLAIN batata hai database query ka execution plan.
+
+Example
+
+EXPLAIN
+SELECT *
+FROM users
+WHERE id = 10;
+
+
+Output batata hai
+
+kaunsa index use hua
+rows kaise access ho rahi hain
+estimated rows kitni hain
+
+
+-------------------------------------
+
+
+3. EXPLAIN ANALYZE
+
+EXPLAIN ANALYZE query ko run karta hai
+aur actual execution time show karta hai.
+
+Example
+
+EXPLAIN ANALYZE
+SELECT *
+FROM users
+WHERE id = 10;
+
+
+-------------------------------------
+
+
+4. SEQ SCAN
+
+Sequential scan ka matlab hai
+database pura table scan kar raha hai.
+
+Use cases
+
+no index
+low selectivity
+
+
+-------------------------------------
+
+
+5. INDEX SCAN
+
+Index scan me database index use karta hai.
+
+Example
+
+SELECT *
+FROM users
+WHERE id = 10;
+
+
+-------------------------------------
+
+
+6. INDEX ONLY SCAN
+
+Agar required columns index me hi mil jayein
+toh database table access nahi karta.
+
+
+-------------------------------------
+
+
+7. COST
+
+Planner cost estimate karta hai
+execution ka.
+
+Format
+
+cost=start..total
+
+
+-------------------------------------
+
+
+8. ROW ESTIMATION
+
+Planner estimate karta hai
+kitni rows match hongi.
+
+Wrong estimates → wrong plans.
+
+
+-------------------------------------
+
+
+9. PRODUCTION INSIGHT
+
+Slow queries debug karne ke liye
+
+EXPLAIN ANALYZE use karo.
+
+
+=====================================
+END OF QUERY PLANNER
+=====================================
