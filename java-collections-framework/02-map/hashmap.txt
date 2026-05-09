@@ -1,0 +1,152 @@
+==================================================
+HASHMAP
+==================================================
+
+# What problem does HashMap solve?
+
+Searching in lists requires traversal:
+O(n)
+
+HashMap provides near O(1) average lookup using hashing.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+HashMap internally uses:
+- Array of buckets
+- Nodes
+- Hashing
+
+Each bucket stores nodes containing:
+- key
+- value
+- hash
+- next reference
+
+==================================================
+HASHING
+==================================================
+
+Hashing converts key into bucket index.
+
+Example:
+
+index = hash % capacity
+
+This allows direct bucket access instead of full traversal.
+
+==================================================
+COLLISION
+==================================================
+
+Collision occurs when multiple keys map to same bucket.
+
+Example:
+27 % 10 = 7
+37 % 10 = 7
+
+==================================================
+COLLISION HANDLING
+==================================================
+
+Java uses chaining.
+
+Initially:
+LinkedList inside bucket
+
+If bucket becomes too large:
+LinkedList -> Red Black Tree
+
+This improves worst-case performance.
+
+==================================================
+LOAD FACTOR
+==================================================
+
+Default load factor:
+0.75
+
+Meaning:
+Resize occurs when map becomes 75% full.
+
+==================================================
+REHASHING
+==================================================
+
+During resize:
+- new larger bucket array created
+- entries redistributed
+
+Rehashing expensive because:
+- memory allocation
+- recomputation
+- data movement
+
+==================================================
+equals() AND hashCode()
+==================================================
+
+hashCode():
+Selects bucket
+
+equals():
+Confirms exact key match
+
+Contract:
+If equals() is true,
+hashCode() must also be same.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+put/get:
+Average O(1)
+
+Worst case:
+O(n)
+
+Treeified bucket:
+O(log n)
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Very fast lookup
+- Efficient key-value storage
+- Widely used
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- No ordering
+- Collision overhead
+- Not thread-safe
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Caching
+- API data lookup
+- Session storage
+- Frequency counting
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Hashing
+- Collisions
+- Load factor
+- Rehashing
+- equals vs hashCode
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+HashMap trades memory and collision management for extremely fast average lookup performance.

@@ -1,0 +1,70 @@
+==================================================
+CONCURRENTSKIPLISTMAP
+==================================================
+
+# What problem does it solve?
+
+Provides:
+- thread safety
+- sorted keys
+
+at the same time.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+Uses Skip List data structure.
+
+Skip List:
+Linked list with fast traversal shortcuts.
+
+==================================================
+WHY NOT HASHING?
+==================================================
+
+Sorting required.
+
+Hashing does not maintain sorted order.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+Average:
+O(log n)
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Thread-safe
+- Sorted ordering
+- Good concurrent scalability
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Slower than ConcurrentHashMap
+- More complex internally
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Concurrent leaderboards
+- Real-time sorted systems
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Skip List concept
+- Thread-safe sorted map
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+ConcurrentSkipListMap sacrifices hashing speed to provide sorted concurrent access.

@@ -1,0 +1,107 @@
+==================================================
+LINKEDLIST
+==================================================
+
+# What problem does LinkedList solve?
+
+ArrayList insertion/removal in middle is expensive because elements shift.
+
+LinkedList solves this by using nodes connected through references.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+LinkedList internally uses doubly linked nodes.
+
+Each node contains:
+- data
+- next pointer
+- previous pointer
+
+Example:
+
+A <-> B <-> C
+
+==================================================
+RANDOM ACCESS
+==================================================
+
+LinkedList does NOT support fast random access.
+
+To access index 5:
+- traversal required
+
+Time complexity:
+O(n)
+
+==================================================
+INSERTION / REMOVAL
+==================================================
+
+Insertion/removal after reaching node:
+O(1)
+
+BUT traversal may still cost O(n)
+
+==================================================
+WHY LINKEDLIST IS SLOW IN PRACTICE
+==================================================
+
+- Pointer traversal
+- Poor cache locality
+- More memory usage
+
+CPU cache optimization poor compared to ArrayList.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+get(index):
+O(n)
+
+add/remove at ends:
+O(1)
+
+middle insertion/removal:
+Traversal dependent
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Efficient insertion/removal
+- No resizing needed
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Slow traversal
+- High memory overhead
+- Poor cache performance
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+Rare in modern backend systems.
+
+Useful when:
+- frequent insertions/removals
+- queue/deque structures
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Doubly linked structure
+- Why ArrayList often faster in real systems
+- Why LinkedList random access slow
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+LinkedList optimizes structural modification but sacrifices cache efficiency and fast traversal.

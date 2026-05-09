@@ -1,0 +1,91 @@
+==================================================
+COPYONWRITEARRAYLIST
+==================================================
+
+# What problem does it solve?
+
+Normal ArrayList is unsafe in multithreading.
+
+CopyOnWriteArrayList provides thread-safe iteration.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+On every write:
+- new array created
+- old elements copied
+- modification applied
+
+Readers use snapshot of old array safely.
+
+==================================================
+WHY WRITES ARE EXPENSIVE
+==================================================
+
+Every modification requires:
+- new array allocation
+- full copying
+
+Write complexity:
+O(n)
+
+==================================================
+WHY ITERATION IS SAFE
+==================================================
+
+Iterator works on immutable snapshot.
+
+No ConcurrentModificationException.
+
+==================================================
+BEST USE-CASE
+==================================================
+
+Read-heavy systems with very few writes.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+Read:
+Fast
+
+Write:
+Expensive
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Thread-safe iteration
+- No fail-fast issues
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- High memory overhead during writes
+- Poor for write-heavy systems
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Configuration lists
+- Event listeners
+- Subscriber lists
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Snapshot iteration
+- Why writes expensive
+- Read-heavy optimization
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+CopyOnWriteArrayList sacrifices write performance for safe concurrent reads.

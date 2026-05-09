@@ -1,0 +1,148 @@
+==================================================
+ARRAYLIST
+==================================================
+
+# What problem does ArrayList solve?
+
+Normal arrays in Java have fixed size.
+
+Example:
+int[] arr = new int[5];
+
+Cannot dynamically grow.
+
+ArrayList solves this problem by providing a dynamic resizable array.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+ArrayList internally uses an array.
+
+Example:
+Object[] elementData;
+
+When capacity becomes full:
+- new bigger array created
+- old elements copied
+- old array discarded
+
+==================================================
+CAPACITY VS SIZE
+==================================================
+
+Capacity:
+- Total space available internally
+
+Size:
+- Actual number of elements present
+
+Example:
+Capacity = 10
+Size = 3
+
+==================================================
+RESIZING
+==================================================
+
+When internal array becomes full:
+- ArrayList grows automatically
+
+Growth formula:
+oldCapacity + (oldCapacity / 2)
+
+Approximately:
+1.5x growth
+
+Example:
+10 -> 15 -> 22 -> 33
+
+==================================================
+WHY RESIZING IS EXPENSIVE
+==================================================
+
+Resizing requires:
+- New array allocation
+- Copying all elements
+
+Time complexity during resize:
+O(n)
+
+Frequent resizing can hurt performance.
+
+==================================================
+WHY INITIAL CAPACITY MATTERS
+==================================================
+
+If large data expected:
+
+new ArrayList<>(1000000);
+
+This avoids repeated resizing and improves performance.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+add() at end:
+- Average: O(1)
+- Resize case: O(n)
+
+get(index):
+- O(1)
+
+insert/remove middle:
+- O(n)
+
+==================================================
+WHY ARRAYLIST IS FAST
+==================================================
+
+ArrayList is cache-friendly.
+
+Elements stored continuously in memory.
+
+CPU cache works efficiently.
+
+This is why ArrayList usually performs better than LinkedList in real systems.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Fast random access
+- Cache friendly
+- Simple structure
+- Good iteration performance
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Middle insertion/removal expensive
+- Resizing cost
+- Not thread-safe
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- API response collections
+- User lists
+- Product lists
+- Read-heavy systems
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- ArrayList internally uses dynamic array
+- Difference between size and capacity
+- Why resizing expensive
+- Why ArrayList faster than LinkedList in practice
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+ArrayList trades resizing cost for fast random access and better cache performance.

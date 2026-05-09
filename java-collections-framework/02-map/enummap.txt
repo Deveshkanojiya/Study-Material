@@ -1,0 +1,67 @@
+==================================================
+ENUMMAP
+==================================================
+
+# What problem does it solve?
+
+Optimized map implementation for enum keys.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+Uses enum ordinal values internally.
+
+Allows direct index-based access.
+
+No hashing required.
+
+==================================================
+WHY FASTER THAN HASHMAP
+==================================================
+
+Direct array-style lookup using enum indexes.
+
+==================================================
+ORDERING
+==================================================
+
+Maintains enum declaration order.
+
+NOT insertion order.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Fast
+- Memory efficient
+- Optimized for enums
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Keys must be enums only
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- State machines
+- Workflow stages
+- Fixed category mappings
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- ordinal()
+- declaration order
+- Difference from HashMap
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+EnumMap optimizes map operations when key set is fixed and enum-based.

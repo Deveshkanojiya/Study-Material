@@ -1,0 +1,113 @@
+==================================================
+JAVA COLLECTION FRAMEWORK HIERARCHY
+==================================================
+
+# What is Collection Framework?
+
+Java Collection Framework provides ready-made data structures and algorithms to efficiently store and manipulate data.
+
+Examples:
+- List
+- Set
+- Queue
+- Map
+
+Main goals:
+- Reusability
+- Performance
+- Standardized APIs
+
+==================================================
+COLLECTION VS COLLECTIONS
+==================================================
+
+Collection:
+- Interface
+- Root interface for List, Set, Queue
+- Represents a group of objects
+
+Collections:
+- Utility class
+- Contains helper methods
+
+Examples:
+- Collections.sort()
+- Collections.reverse()
+- Collections.max()
+
+==================================================
+MAP VS COLLECTION
+==================================================
+
+Collection:
+- Stores single elements
+
+Map:
+- Stores key-value pairs
+
+Map is NOT part of Collection hierarchy because its structure is different from normal collections.
+
+==================================================
+LIST
+==================================================
+
+Characteristics:
+- Ordered
+- Allows duplicates
+- Index-based access
+
+Examples:
+- ArrayList
+- LinkedList
+- Vector
+- Stack
+
+Use-case:
+- When insertion order matters
+- When duplicates allowed
+
+==================================================
+SET
+==================================================
+
+Characteristics:
+- No duplicates
+
+Examples:
+- HashSet
+- LinkedHashSet
+- TreeSet
+
+Use-case:
+- Unique elements required
+
+==================================================
+QUEUE
+==================================================
+
+Characteristics:
+- FIFO (First In First Out)
+
+Examples:
+- PriorityQueue
+- ArrayDeque
+
+Use-case:
+- Task scheduling
+- Messaging systems
+- Producer-consumer systems
+
+==================================================
+IMPORTANT MENTAL MODEL
+==================================================
+
+Collections Framework is mainly about tradeoffs:
+
+- Speed
+- Memory
+- Ordering
+- Thread safety
+- Sorting
+- Concurrency
+
+Different collections optimize different things.
