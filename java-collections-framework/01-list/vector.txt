@@ -1,0 +1,66 @@
+==================================================
+VECTOR
+==================================================
+
+# What is Vector?
+
+Legacy dynamic array implementation.
+
+Similar to ArrayList but synchronized.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+Uses dynamic array internally like ArrayList.
+
+==================================================
+SYNCHRONIZATION
+==================================================
+
+Methods are synchronized.
+
+Thread-safe but slower due to locking overhead.
+
+==================================================
+WHY VECTOR IS RARELY USED
+==================================================
+
+Modern alternatives better:
+- ArrayList
+- CopyOnWriteArrayList
+- Concurrent collections
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+Similar to ArrayList.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Thread-safe
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Slower due to synchronization
+- Legacy class
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+Vector vs ArrayList:
+- synchronization
+- performance difference
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+Vector sacrificed performance for thread safety before modern concurrent collections existed.\
+

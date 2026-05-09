@@ -1,0 +1,65 @@
+==================================================
+WEAKHASHMAP
+==================================================
+
+# What problem does it solve?
+
+Normal HashMap holds strong references to keys.
+
+This can prevent garbage collection and contribute to memory leaks.
+
+WeakHashMap allows keys to be garbage collected when no strong references exist.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+Uses weak references for keys.
+
+If key has no strong reference elsewhere:
+GC can remove entry automatically.
+
+==================================================
+GARBAGE COLLECTION BEHAVIOR
+==================================================
+
+Entry removal timing is not deterministic.
+
+Depends on:
+- Garbage Collector
+- Memory pressure
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Helps avoid memory leaks
+- Automatic cleanup
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Entries may disappear unexpectedly
+- Less predictable behavior
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Temporary caches
+- Metadata tracking
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Weak references
+- GC interaction
+- Difference from HashMap
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+WeakHashMap sacrifices stability of entries for better garbage collection behavior.

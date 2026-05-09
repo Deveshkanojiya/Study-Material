@@ -1,0 +1,75 @@
+==================================================
+TREEMAP
+==================================================
+
+# What problem does it solve?
+
+Provides automatically sorted key-value storage.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+TreeMap internally uses Red Black Tree.
+
+No hashing used.
+
+==================================================
+SORTING
+==================================================
+
+Sorting based on:
+- Comparable
+OR
+- Comparator
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+put/get/remove:
+O(log n)
+
+==================================================
+WHY SLOWER THAN HASHMAP
+==================================================
+
+Requires tree traversal and comparisons.
+
+HashMap directly accesses buckets.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Sorted data
+- Range operations possible
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Slower than HashMap
+- More complex internally
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Leaderboards
+- Rankings
+- Timestamp ordering
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Red Black Tree
+- Comparator vs Comparable
+- SortedMap relationship
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+TreeMap sacrifices O(1) lookup for automatic sorting.

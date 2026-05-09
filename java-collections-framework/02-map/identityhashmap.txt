@@ -1,0 +1,71 @@
+==================================================
+IDENTITYHASHMAP
+==================================================
+
+# What problem does it solve?
+
+Normal HashMap compares keys using:
+- equals()
+- hashCode()
+
+IdentityHashMap compares keys using:
+==
+
+==================================================
+LOGICAL EQUALITY VS OBJECT IDENTITY
+==================================================
+
+equals():
+Logical equality
+
+== :
+Reference equality
+
+==================================================
+EXAMPLE
+==================================================
+
+String a = new String("hello");
+String b = new String("hello");
+
+a.equals(b) -> true
+a == b -> false
+
+HashMap:
+Treats them same
+
+IdentityHashMap:
+Treats them different
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Tracks exact object identity
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Unusual behavior
+- Rarely needed in normal applications
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Object graph processing
+- Serialization frameworks
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- == vs equals()
+- Object identity vs logical equality
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+IdentityHashMap focuses on exact object references instead of logical equality.

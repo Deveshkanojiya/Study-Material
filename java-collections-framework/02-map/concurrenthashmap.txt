@@ -1,0 +1,94 @@
+==================================================
+CONCURRENTHASHMAP
+==================================================
+
+# What problem does it solve?
+
+HashMap is unsafe in multithreading.
+
+ConcurrentHashMap provides thread-safe concurrent access.
+
+==================================================
+WHY HASHMAP FAILS
+==================================================
+
+Multiple threads modifying same structure can cause:
+- race conditions
+- inconsistent state
+- corruption during resizing
+
+==================================================
+HASHTABLE PROBLEM
+==================================================
+
+Hashtable synchronizes entire map.
+
+This causes heavy blocking and poor scalability.
+
+==================================================
+CORE IDEA
+==================================================
+
+Thread safety with minimal locking.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+Uses:
+- bucket-level synchronization
+- CAS operations
+- fine-grained locking
+
+Allows better concurrent access.
+
+==================================================
+READ OPTIMIZATION
+==================================================
+
+Reads are mostly lock-free.
+
+This improves scalability significantly.
+
+==================================================
+NULL RESTRICTION
+==================================================
+
+Null keys and values not allowed.
+
+Avoids ambiguity in concurrent systems.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+Similar average performance to HashMap.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Thread-safe
+- Better scalability
+- Optimized concurrent reads
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- More internal complexity
+- Slight overhead compared to HashMap
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Concurrent caching
+- Shared backend data
+- Session management
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+ConcurrentHashMap balances thread safety and scalability using smarter synchronization strategies.

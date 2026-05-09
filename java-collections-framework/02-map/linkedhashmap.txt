@@ -1,0 +1,71 @@
+==================================================
+LINKEDHASHMAP
+==================================================
+
+# What problem does it solve?
+
+HashMap does not maintain order.
+
+LinkedHashMap preserves insertion order.
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+LinkedHashMap =
+HashMap + Doubly Linked List
+
+HashMap provides fast lookup.
+Linked list maintains order.
+
+==================================================
+ORDER TYPES
+==================================================
+
+1. Insertion Order
+2. Access Order
+
+Access order useful for LRU Cache.
+
+==================================================
+LRU CACHE
+==================================================
+
+Least Recently Used cache removes least recently accessed entries.
+
+LinkedHashMap supports this efficiently.
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+Similar to HashMap.
+
+Slightly slower due to linked list maintenance.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Predictable ordering
+- Supports LRU logic
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- Extra memory usage
+- Slightly slower than HashMap
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- LRU cache
+- Ordered API responses
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+LinkedHashMap sacrifices some performance and memory for predictable ordering.

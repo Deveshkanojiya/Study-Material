@@ -1,0 +1,68 @@
+==================================================
+STACK
+==================================================
+
+# What is Stack?
+
+LIFO structure:
+Last In First Out
+
+==================================================
+OPERATIONS
+==================================================
+
+push():
+Add element
+
+pop():
+Remove top element
+
+peek():
+View top element
+
+==================================================
+INTERNAL WORKING
+==================================================
+
+Java Stack extends Vector.
+
+Legacy implementation.
+
+==================================================
+WHY STACK IS AVOIDED NOW
+==================================================
+
+Modern recommendation:
+ArrayDeque
+
+Reasons:
+- better performance
+- no unnecessary synchronization
+
+==================================================
+TIME COMPLEXITY
+==================================================
+
+push/pop:
+O(1)
+
+==================================================
+USE-CASES
+==================================================
+
+- Function call stack
+- Undo operations
+- Expression evaluation
+- DFS traversal
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+Why ArrayDeque preferred over Stack.
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+Stack is conceptually important, but ArrayDeque is usually better in modern Java.

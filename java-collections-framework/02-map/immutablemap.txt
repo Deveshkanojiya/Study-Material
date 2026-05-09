@@ -1,0 +1,72 @@
+==================================================
+IMMUTABLEMAP
+==================================================
+
+# What problem does it solve?
+
+Prevents accidental modification of shared data.
+
+ImmutableMap cannot be modified after creation.
+
+==================================================
+IMMUTABILITY
+==================================================
+
+After creation:
+- no add
+- no remove
+- no update
+
+==================================================
+THREAD SAFETY BENEFIT
+==================================================
+
+Immutable structures are naturally safer in multithreading because state never changes.
+
+==================================================
+SHALLOW IMMUTABILITY
+==================================================
+
+Immutable map can still contain mutable objects.
+
+Example:
+Map<String, List<Integer>>
+
+Map immutable,
+List may still change.
+
+==================================================
+ADVANTAGES
+==================================================
+
+- Safer shared state
+- Predictable behavior
+- Better concurrency safety
+
+==================================================
+DISADVANTAGES
+==================================================
+
+- No modification allowed
+- Requires recreation for updates
+
+==================================================
+BACKEND USE-CASES
+==================================================
+
+- Configuration data
+- Constants
+- Shared read-only state
+
+==================================================
+IMPORTANT INTERVIEW POINTS
+==================================================
+
+- Shallow vs deep immutability
+- Thread-safety benefits
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+ImmutableMap sacrifices flexibility for safety and predictability.
