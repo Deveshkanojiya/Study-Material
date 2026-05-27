@@ -1,0 +1,75 @@
+==================================================
+ITERABLE
+==================================================
+
+# What problem does it solve?
+
+Iterable allows objects to provide Iterator support.
+
+Main focus:
+Making traversal possible.
+
+--------------------------------------------------
+
+# Core Idea
+
+If object implements Iterable:
+Java knows iterator can be created for it.
+
+--------------------------------------------------
+
+# Important Method
+
+iterator()
+
+Returns Iterator object.
+
+--------------------------------------------------
+
+# Internal Working
+
+Collections implement Iterable.
+
+That is why:
+for-each loop works on collections.
+
+--------------------------------------------------
+
+# Example
+
+for(Integer n : nums)
+
+works because collection implements Iterable.
+
+--------------------------------------------------
+
+# Relationship
+
+Iterable:
+creates/provides iterator.
+
+Iterator:
+actually traverses elements.
+
+--------------------------------------------------
+
+# Advantages
+
+- Enables standard iteration
+- Supports for-each loop
+- Common traversal abstraction
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Iterable provides iterator()
+- Collections implement Iterable
+- Enables enhanced for-loop
+
+--------------------------------------------------
+
+# My Understanding
+
+Iterable basically means:
+"this object can provide iterator traversal support."

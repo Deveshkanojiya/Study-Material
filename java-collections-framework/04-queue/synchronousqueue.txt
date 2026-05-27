@@ -1,0 +1,83 @@
+==================================================
+SYNCHRONOUSQUEUE
+==================================================
+
+# What problem does it solve?
+
+SynchronousQueue provides direct handoff between threads.
+
+Main focus:
+Thread-to-thread communication.
+
+--------------------------------------------------
+
+# Core Idea
+
+Queue capacity is ZERO.
+
+Elements are not stored.
+
+--------------------------------------------------
+
+# Internal Working
+
+Producer thread must directly hand item to consumer thread.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+Producer waits until consumer receives item.
+
+Consumer waits until producer sends item.
+
+--------------------------------------------------
+
+# Storage
+
+No internal buffering.
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Designed specifically for concurrency.
+
+--------------------------------------------------
+
+# Advantages
+
+- Direct thread coordination
+- No memory storage overhead
+- High-performance handoff
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Very specialized use-case
+- Harder to understand/debug
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- ThreadPoolExecutor internals
+- Direct task handoff systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Capacity is zero
+- No storage
+- Direct producer-consumer handoff
+- Thread-safe
+
+--------------------------------------------------
+
+# My Understanding
+
+SynchronousQueue acts like direct object passing between threads instead of normal queue storage.

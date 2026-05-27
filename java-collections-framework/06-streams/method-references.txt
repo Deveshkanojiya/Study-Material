@@ -1,0 +1,74 @@
+==================================================
+METHOD REFERENCES
+==================================================
+
+# What problem does it solve?
+
+Method references provide shorter cleaner lambda syntax.
+
+--------------------------------------------------
+
+# Core Idea
+
+Instead of:
+
+x -> x.method()
+
+Use:
+
+ClassName::method
+
+--------------------------------------------------
+
+# Example
+
+String::toUpperCase
+
+Equivalent to:
+
+s -> s.toUpperCase()
+
+--------------------------------------------------
+
+# Another Example
+
+System.out::println
+
+Equivalent to:
+
+x -> System.out.println(x)
+
+--------------------------------------------------
+
+# Common Types
+
+Object instance method:
+String::length
+
+Static method:
+Integer::parseInt
+
+Constructor reference:
+ArrayList::new
+
+--------------------------------------------------
+
+# Advantages
+
+- Cleaner syntax
+- Better readability
+- Less boilerplate
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Method reference is shorthand lambda
+- Uses :: operator
+- Does not add new functionality
+
+--------------------------------------------------
+
+# My Understanding
+
+Method references are simply cleaner shortcuts for simple lambda expressions.

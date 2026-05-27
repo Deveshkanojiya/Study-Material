@@ -1,0 +1,103 @@
+==================================================
+STREAMS BASICS
+==================================================
+
+# What problem does it solve?
+
+Streams help process and transform data cleanly.
+
+Main focus:
+Data processing pipelines.
+
+--------------------------------------------------
+
+# Core Idea
+
+Streams allow operations like:
+- filtering
+- transforming
+- sorting
+- aggregation
+
+without manual loops.
+
+--------------------------------------------------
+
+# Example
+
+nums.stream()
+    .filter(n -> n % 2 == 0)
+    .toList();
+
+--------------------------------------------------
+
+# Stream Flow
+
+Data
+-> processing operations
+-> final result
+
+--------------------------------------------------
+
+# Important Characteristic
+
+Streams do NOT store data.
+
+They process data from collections.
+
+--------------------------------------------------
+
+# Common Operations
+
+filter()
+map()
+sorted()
+distinct()
+reduce()
+collect()
+
+--------------------------------------------------
+
+# Stream Creation
+
+list.stream()
+
+--------------------------------------------------
+
+# Advantages
+
+- Cleaner code
+- Functional-style processing
+- Less boilerplate
+- Easy chaining
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Can confuse beginners
+- Debugging sometimes harder
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Filtering API data
+- Transforming DTOs
+- Aggregations
+- Report generation
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Streams process data
+- Streams do not store data
+- Streams support chaining
+- Streams are lazy
+
+--------------------------------------------------
+
+# My Understanding
+
+Streams are pipelines used to transform and process collection data step-by-step.

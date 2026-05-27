@@ -1,0 +1,99 @@
+==================================================
+PRIORITYBLOCKINGQUEUE
+==================================================
+
+# What problem does it solve?
+
+PriorityBlockingQueue combines:
+- priority-based processing
+- thread-safe blocking behavior
+
+Main focus:
+Concurrent priority scheduling.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally based on:
+PriorityQueue.
+
+Uses:
+Heap structure internally.
+
+--------------------------------------------------
+
+# Priority Behavior
+
+Elements processed based on priority.
+
+NOT FIFO.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+Consumer waits if queue empty.
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Supports concurrent access.
+
+--------------------------------------------------
+
+# Ordering
+
+Default:
+Smallest element gets highest priority.
+
+Custom ordering possible using Comparator.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()   -> O(log n)
+take()  -> O(log n)
+peek()  -> O(1)
+
+--------------------------------------------------
+
+# Advantages
+
+- Priority-based concurrent processing
+- Thread-safe
+- Efficient scheduling
+
+--------------------------------------------------
+
+# Disadvantages
+
+- More complex internally
+- No FIFO guarantee
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Task schedulers
+- Priority job systems
+- Multi-threaded scheduling systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Combines BlockingQueue + PriorityQueue
+- Uses heap internally
+- Thread-safe
+- Supports Comparator
+
+--------------------------------------------------
+
+# My Understanding
+
+PriorityBlockingQueue allows multiple threads to safely process high-priority tasks first.

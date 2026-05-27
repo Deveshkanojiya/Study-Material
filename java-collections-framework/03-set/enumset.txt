@@ -1,0 +1,77 @@
+==================================================
+ENUMSET
+==================================================
+
+# What problem does it solve?
+
+EnumSet stores enum values efficiently.
+
+Main focus:
+Fast and memory-efficient enum storage.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally optimized for enums.
+
+Uses:
+Bit-vector/bit-mask style implementation internally.
+
+--------------------------------------------------
+
+# Performance
+
+Very fast because enum values are fixed constants.
+
+No hashing or tree traversal needed.
+
+--------------------------------------------------
+
+# Ordering
+
+Maintains natural enum declaration order.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()       -> O(1)
+contains()  -> O(1)
+remove()    -> O(1)
+
+--------------------------------------------------
+
+# Advantages
+
+- Extremely fast
+- Memory efficient
+- Optimized specifically for enums
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Works ONLY with enums
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- User roles
+- Permission systems
+- Status tracking
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Only works with enums
+- Faster than HashSet for enums
+- Uses bit-level optimization internally
+
+--------------------------------------------------
+
+# My Understanding
+
+EnumSet is a specialized high-performance set designed only for enum values.

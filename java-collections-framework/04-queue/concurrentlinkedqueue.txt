@@ -1,0 +1,85 @@
+==================================================
+CONCURRENTLINKEDQUEUE
+==================================================
+
+# What problem does it solve?
+
+ConcurrentLinkedQueue provides:
+- thread-safe queue operations
+- high concurrency
+- non-blocking behavior
+
+Main focus:
+Scalable concurrent access.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+Linked nodes.
+
+Uses:
+CAS (Compare And Swap) operations.
+
+--------------------------------------------------
+
+# Concurrency
+
+Multiple threads can operate simultaneously.
+
+No full locking like old synchronized structures.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+NON-blocking.
+
+Threads do not wait automatically.
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Optimized for concurrent environments.
+
+--------------------------------------------------
+
+# Advantages
+
+- High concurrency
+- Good scalability
+- Non-blocking performance
+
+--------------------------------------------------
+
+# Disadvantages
+
+- More complex internally
+- No blocking/waiting support
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- High-throughput systems
+- Concurrent task queues
+- Event-driven systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Non-blocking concurrent queue
+- Uses CAS internally
+- Thread-safe
+- Better scalability than synchronized queues
+
+--------------------------------------------------
+
+# My Understanding
+
+ConcurrentLinkedQueue focuses on scalable thread-safe access without blocking threads.

@@ -1,0 +1,98 @@
+==================================================
+FAIL-FAST VS FAIL-SAFE
+==================================================
+
+# What problem does it solve?
+
+Explains iterator behavior during concurrent modification.
+
+--------------------------------------------------
+
+# FAIL-FAST ITERATOR
+
+If collection modified during iteration:
+iterator immediately throws exception.
+
+--------------------------------------------------
+
+# Exception
+
+ConcurrentModificationException
+
+--------------------------------------------------
+
+# Example
+
+for(Integer n : nums) {
+    nums.remove(n);
+}
+
+Can throw:
+ConcurrentModificationException
+
+--------------------------------------------------
+
+# Why Fail-Fast Exists?
+
+Prevents:
+- corrupted traversal
+- inconsistent behavior
+
+Fails immediately for safety.
+
+--------------------------------------------------
+
+# Common Fail-Fast Collections
+
+- ArrayList
+- HashMap
+- HashSet
+
+--------------------------------------------------
+
+# FAIL-SAFE ITERATOR
+
+Iteration works on snapshot/copy instead of original collection.
+
+Modification does NOT affect current traversal.
+
+--------------------------------------------------
+
+# Example Collection
+
+CopyOnWriteArrayList
+
+--------------------------------------------------
+
+# Internal Working
+
+Iterator traverses old snapshot copy.
+
+--------------------------------------------------
+
+# Advantages of Fail-Safe
+
+- No ConcurrentModificationException
+- Safer concurrent traversal
+
+--------------------------------------------------
+
+# Disadvantages of Fail-Safe
+
+- Extra memory usage
+- Copy overhead
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Fail-fast throws exception on modification
+- Fail-safe works on snapshot
+- CopyOnWrite collections are fail-safe
+
+--------------------------------------------------
+
+# My Understanding
+
+Fail-fast stops unsafe modification immediately,
+while fail-safe uses separate snapshot traversal.

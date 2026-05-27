@@ -1,0 +1,92 @@
+==================================================
+TERMINAL OPERATIONS
+==================================================
+
+# What are Terminal Operations?
+
+Operations that produce final result from stream.
+
+--------------------------------------------------
+
+# Important Property
+
+Terminal operation triggers stream execution.
+
+Without terminal operation:
+stream pipeline does not execute.
+
+--------------------------------------------------
+
+# Common Terminal Operations
+
+toList()
+collect()
+reduce()
+forEach()
+count()
+findFirst()
+
+--------------------------------------------------
+
+# collect()
+
+Collects final result into structure.
+
+Example:
+
+.collect(Collectors.toList())
+
+--------------------------------------------------
+
+# reduce()
+
+Combines stream into single result.
+
+Example:
+
+.reduce(0, (a,b) -> a+b)
+
+--------------------------------------------------
+
+# forEach()
+
+Processes each element.
+
+--------------------------------------------------
+
+# count()
+
+Returns total elements.
+
+--------------------------------------------------
+
+# findFirst()
+
+Returns first matching element.
+
+--------------------------------------------------
+
+# Important Property
+
+Streams cannot be reused after terminal operation.
+
+--------------------------------------------------
+
+# Advantages
+
+- Final aggregation support
+- Flexible result generation
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Terminal operation executes stream
+- Stream closes after terminal operation
+- Produces final result
+
+--------------------------------------------------
+
+# My Understanding
+
+Terminal operations complete stream pipeline and produce final output.

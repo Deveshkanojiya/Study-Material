@@ -1,0 +1,98 @@
+==================================================
+PRIORITYQUEUE
+==================================================
+
+# What problem does it solve?
+
+PriorityQueue processes elements based on priority instead of arrival order.
+
+Main focus:
+Priority-based processing.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+Binary Heap.
+
+Default behavior:
+Smallest element gets highest priority.
+
+--------------------------------------------------
+
+# Example
+
+Elements:
+30,10,20
+
+poll() returns:
+10
+
+NOT 30.
+
+--------------------------------------------------
+
+# Custom Priority
+
+Comparator can change priority logic.
+
+Example:
+
+Comparator.reverseOrder()
+
+makes largest element highest priority.
+
+--------------------------------------------------
+
+# Ordering
+
+Does NOT maintain insertion order.
+
+Maintains heap-based priority ordering.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()       -> O(log n)
+poll()      -> O(log n)
+peek()      -> O(1)
+
+--------------------------------------------------
+
+# Advantages
+
+- Efficient priority processing
+- Fast access to highest priority element
+
+--------------------------------------------------
+
+# Disadvantages
+
+- No FIFO guarantee
+- Internally more complex than normal queue
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- CPU scheduling
+- Task prioritization
+- Dijkstra algorithm
+- Top-K problems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Internally uses heap
+- Default is min-heap
+- Comparator customizes priority
+- Not FIFO
+
+--------------------------------------------------
+
+# My Understanding
+
+PriorityQueue focuses on importance/priority rather than arrival order.

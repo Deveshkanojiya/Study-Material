@@ -1,0 +1,108 @@
+==================================================
+ITERATOR
+==================================================
+
+# What problem does it solve?
+
+Iterator helps traverse collection elements one-by-one.
+
+Main focus:
+Standard traversal mechanism.
+
+--------------------------------------------------
+
+# Core Idea
+
+Iterator acts like:
+cursor/pointer over collection.
+
+--------------------------------------------------
+
+# Example
+
+[10,20,30]
+
+Iterator moves like:
+
+10 -> 20 -> 30
+
+--------------------------------------------------
+
+# Core Methods
+
+hasNext()
+Checks whether next element exists.
+
+next()
+Returns current element and moves pointer forward.
+
+remove()
+Removes current element safely.
+
+--------------------------------------------------
+
+# Internal Working
+
+Collection provides iterator object.
+
+Iterator maintains traversal state internally.
+
+--------------------------------------------------
+
+# Example
+
+Iterator<Integer> it = nums.iterator();
+
+while(it.hasNext()) {
+    System.out.println(it.next());
+}
+
+--------------------------------------------------
+
+# Relationship with for-each Loop
+
+for-each loop internally uses Iterator.
+
+Example:
+
+for(Integer n : nums)
+
+internally behaves roughly like iterator traversal.
+
+--------------------------------------------------
+
+# Advantages
+
+- Standard traversal mechanism
+- Works across collections
+- Safe traversal abstraction
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Only forward traversal
+- Slightly verbose syntax
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Collection traversal
+- Safe removal during iteration
+- Generic processing systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Iterator is interface
+- Used for traversal
+- hasNext() + next() important
+- for-each loop internally uses Iterator
+
+--------------------------------------------------
+
+# My Understanding
+
+Iterator is basically a cursor/pointer used to move through collection elements one-by-one.

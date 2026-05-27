@@ -1,0 +1,108 @@
+==================================================
+HASHSET
+==================================================
+
+# What problem does it solve?
+
+HashSet stores unique elements.
+Duplicate values are not allowed.
+
+Main focus:
+Fast lookup + uniqueness.
+
+--------------------------------------------------
+
+# Internal Working
+
+HashSet internally uses HashMap.
+
+Element added in HashSet becomes key in HashMap.
+
+Example internally:
+
+set.add("raj")
+
+roughly becomes:
+
+map.put("raj", PRESENT)
+
+PRESENT is a dummy object because HashSet only cares about keys.
+
+--------------------------------------------------
+
+# Hashing
+
+Hashing decides bucket location.
+
+HashSet uses:
+- hashCode()
+- equals()
+
+for duplicate detection.
+
+--------------------------------------------------
+
+# Duplicate Prevention
+
+If:
+- hashCode same
+- equals true
+
+then duplicate not inserted.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()       -> O(1) average
+contains()  -> O(1) average
+remove()    -> O(1) average
+
+Worst case:
+O(n) if collisions become too high.
+
+--------------------------------------------------
+
+# Ordering
+
+HashSet does NOT maintain insertion order.
+
+--------------------------------------------------
+
+# Advantages
+
+- Fast operations
+- Duplicate prevention
+- Good average performance
+
+--------------------------------------------------
+
+# Disadvantages
+
+- No ordering
+- Collision issues possible
+- Custom objects require proper equals/hashCode
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Unique user IDs
+- Unique tags
+- Fast duplicate checks
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Internally uses HashMap
+- Uses hashing
+- Duplicate detection depends on equals/hashCode
+- Not thread-safe
+
+--------------------------------------------------
+
+# My Understanding
+
+HashSet is basically HashMap without meaningful values.
+It focuses only on unique keys.

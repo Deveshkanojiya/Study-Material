@@ -1,0 +1,96 @@
+==================================================
+COLLECTORS
+==================================================
+
+# What problem does it solve?
+
+Collectors help gather final stream results into useful structures.
+
+--------------------------------------------------
+
+# Core Idea
+
+Collectors define:
+how final stream result should be collected.
+
+--------------------------------------------------
+
+# Common Collectors
+
+toList()
+toSet()
+groupingBy()
+joining()
+counting()
+
+--------------------------------------------------
+
+# toList()
+
+Collects result into List.
+
+--------------------------------------------------
+
+# toSet()
+
+Collects result into Set.
+
+--------------------------------------------------
+
+# groupingBy()
+
+Groups data based on key.
+
+Example:
+
+groupingBy(String::length)
+
+--------------------------------------------------
+
+# joining()
+
+Combines elements into String.
+
+--------------------------------------------------
+
+# counting()
+
+Counts elements.
+
+--------------------------------------------------
+
+# Example
+
+names.stream()
+     .collect(Collectors.toList())
+
+--------------------------------------------------
+
+# Advantages
+
+- Flexible result generation
+- Powerful grouping support
+- Useful aggregations
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Analytics
+- Reporting
+- DTO grouping
+- Aggregation systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- collect() uses Collectors
+- groupingBy very important
+- Collectors generate final structures
+
+--------------------------------------------------
+
+# My Understanding
+
+Collectors define how processed stream data should be organized and returned.

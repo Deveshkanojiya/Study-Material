@@ -1,0 +1,90 @@
+==================================================
+LINKEDHASHSET
+==================================================
+
+# What problem does it solve?
+
+LinkedHashSet stores unique elements while maintaining insertion order.
+
+Main focus:
+Uniqueness + predictable iteration order.
+
+--------------------------------------------------
+
+# Internal Working
+
+LinkedHashSet internally uses LinkedHashMap.
+
+Internally:
+- hashing for fast lookup
+- doubly linked structure for order tracking
+
+--------------------------------------------------
+
+# Ordering
+
+Insertion order is maintained.
+
+Example:
+
+3,1,2
+
+Output:
+[3,1,2]
+
+--------------------------------------------------
+
+# Hashing
+
+Uses:
+- hashCode()
+- equals()
+
+for duplicate detection.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()       -> O(1) average
+contains()  -> O(1) average
+remove()    -> O(1) average
+
+--------------------------------------------------
+
+# Advantages
+
+- Maintains insertion order
+- Fast average operations
+- Prevents duplicates
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Slightly more memory than HashSet
+- Slightly slower due to linked structure
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Ordered unique tags
+- Ordered unique IDs
+- Cache-related ordering scenarios
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Internally uses LinkedHashMap
+- Maintains insertion order
+- Uses hashing internally
+- Not thread-safe
+
+--------------------------------------------------
+
+# My Understanding
+
+LinkedHashSet is basically HashSet with ordering support.
+It trades slightly more memory for predictable order.

@@ -1,0 +1,93 @@
+==================================================
+TREESET
+==================================================
+
+# What problem does it solve?
+
+TreeSet stores unique elements in sorted order.
+
+Main focus:
+Uniqueness + automatic sorting.
+
+--------------------------------------------------
+
+# Internal Working
+
+TreeSet internally uses TreeMap.
+
+Internally based on:
+Red-Black Tree.
+
+--------------------------------------------------
+
+# Sorting
+
+Elements remain sorted automatically.
+
+Default:
+Ascending order.
+
+Custom sorting possible using:
+Comparator.
+
+--------------------------------------------------
+
+# Comparison Logic
+
+Uses:
+- Comparable
+OR
+- Comparator
+
+for ordering.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()       -> O(log n)
+contains()  -> O(log n)
+remove()    -> O(log n)
+
+Slower than HashSet because tree traversal is needed.
+
+--------------------------------------------------
+
+# Advantages
+
+- Sorted data
+- Automatic ordering
+- Range operations possible
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Slower than HashSet
+- More memory usage
+- Sorting overhead
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Leaderboards
+- Ranking systems
+- Sorted unique records
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Internally uses TreeMap
+- Uses Red-Black Tree
+- Maintains sorted order
+- Comparable/Comparator important
+- Not thread-safe
+
+--------------------------------------------------
+
+# My Understanding
+
+TreeSet focuses on sorted unique elements.
+It sacrifices some performance for automatic ordering.

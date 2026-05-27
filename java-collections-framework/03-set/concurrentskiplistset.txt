@@ -1,0 +1,87 @@
+==================================================
+CONCURRENTSKIPLISTSET
+==================================================
+
+# What problem does it solve?
+
+ConcurrentSkipListSet provides:
+- sorted data
+- thread safety
+- concurrent access
+
+Main focus:
+Concurrent sorted set operations.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+ConcurrentSkipListMap.
+
+Based on:
+Skip List data structure.
+
+--------------------------------------------------
+
+# Sorting
+
+Elements remain sorted automatically.
+
+--------------------------------------------------
+
+# Concurrency
+
+Thread-safe.
+
+Designed for concurrent environments.
+
+Uses efficient concurrent algorithms instead of locking entire structure.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add()       -> O(log n)
+contains()  -> O(log n)
+remove()    -> O(log n)
+
+--------------------------------------------------
+
+# Advantages
+
+- Thread-safe
+- Sorted order
+- Good concurrent performance
+
+--------------------------------------------------
+
+# Disadvantages
+
+- More complex internally
+- Slower than HashSet
+- Higher memory overhead
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Concurrent ranking systems
+- Real-time sorted data
+- Multi-threaded ordered processing
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Thread-safe sorted set
+- Internally uses ConcurrentSkipListMap
+- Uses skip list structure
+- Better concurrency than synchronized sorted sets
+
+--------------------------------------------------
+
+# My Understanding
+
+ConcurrentSkipListSet combines:
+sorting + concurrency + scalability.

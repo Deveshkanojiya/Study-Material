@@ -1,0 +1,76 @@
+==================================================
+REDUCE
+==================================================
+
+# What problem does it solve?
+
+reduce() combines multiple elements into single result.
+
+--------------------------------------------------
+
+# Core Idea
+
+Many values
+-> one final value
+
+--------------------------------------------------
+
+# Example
+
+nums.stream()
+    .reduce(0, (a,b) -> a+b)
+
+--------------------------------------------------
+
+# Step-by-Step
+
+0 + 1 = 1
+1 + 2 = 3
+3 + 3 = 6
+
+Final:
+6
+
+--------------------------------------------------
+
+# Common Uses
+
+- Sum
+- Product
+- Maximum
+- Minimum
+
+--------------------------------------------------
+
+# Multiplication Example
+
+.reduce(1, (a,b) -> a*b)
+
+--------------------------------------------------
+
+# Important Components
+
+Initial value
++
+accumulation logic
+
+--------------------------------------------------
+
+# Advantages
+
+- Powerful aggregation
+- Functional accumulation
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- reduce combines stream into single value
+- Uses accumulator logic
+- Terminal operation
+
+--------------------------------------------------
+
+# My Understanding
+
+reduce() repeatedly combines values until only one final result remains.

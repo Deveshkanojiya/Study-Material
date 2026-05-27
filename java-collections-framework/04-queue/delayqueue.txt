@@ -1,0 +1,76 @@
+==================================================
+DELAYQUEUE
+==================================================
+
+# What problem does it solve?
+
+DelayQueue stores elements that become available only after a delay.
+
+Main focus:
+Delayed processing.
+
+--------------------------------------------------
+
+# Core Idea
+
+Elements cannot be taken immediately.
+
+They become available only after delay expires.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally priority-based according to delay time.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+Consumer waits until delay expires.
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Designed for concurrent delayed processing.
+
+--------------------------------------------------
+
+# Advantages
+
+- Automatic delayed scheduling
+- Thread-safe
+- Useful for timed processing
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Specialized use-case
+- More complex than normal queues
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Task schedulers
+- Retry systems
+- Delayed jobs
+- Cache expiration systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Elements available after delay
+- Thread-safe
+- Consumer blocks until delay expires
+
+--------------------------------------------------
+
+# My Understanding
+
+DelayQueue is used when tasks should execute only after waiting for specific time duration.

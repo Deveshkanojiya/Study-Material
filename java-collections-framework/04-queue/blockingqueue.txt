@@ -1,0 +1,81 @@
+==================================================
+BLOCKINGQUEUE
+==================================================
+
+# What problem does it solve?
+
+BlockingQueue helps threads safely communicate using queues.
+
+Main focus:
+Thread coordination.
+
+--------------------------------------------------
+
+# Core Idea
+
+If queue empty:
+consumer thread waits.
+
+If queue full:
+producer thread waits.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+Thread pauses automatically until condition becomes valid.
+
+--------------------------------------------------
+
+# Important Methods
+
+put()   -> waits if full
+take()  -> waits if empty
+
+--------------------------------------------------
+
+# Internal Working
+
+BlockingQueue is interface.
+
+Used heavily in:
+- multithreading
+- producer-consumer systems
+
+--------------------------------------------------
+
+# Advantages
+
+- Thread-safe
+- Automatic waiting
+- Simplifies thread coordination
+
+--------------------------------------------------
+
+# Disadvantages
+
+- More overhead than normal queue
+- Concurrency complexity
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Thread pools
+- Kafka consumers
+- Task processing systems
+- Async systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- BlockingQueue is thread-safe
+- Supports producer-consumer pattern
+- put/take perform blocking
+
+--------------------------------------------------
+
+# My Understanding
+
+BlockingQueue automatically manages waiting between producer and consumer threads.

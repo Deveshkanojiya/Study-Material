@@ -1,0 +1,94 @@
+==================================================
+ARRAYBLOCKINGQUEUE
+==================================================
+
+# What problem does it solve?
+
+ArrayBlockingQueue provides:
+- thread safety
+- blocking behavior
+- fixed-size queue
+
+Main focus:
+Controlled producer-consumer systems.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+Fixed-size array.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+If queue full:
+producer thread waits.
+
+If queue empty:
+consumer thread waits.
+
+--------------------------------------------------
+
+# Capacity
+
+Capacity must be fixed at creation time.
+
+Example:
+
+new ArrayBlockingQueue<>(5)
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Uses locking internally.
+
+--------------------------------------------------
+
+# Time Complexity
+
+add/remove:
+O(1)
+
+--------------------------------------------------
+
+# Advantages
+
+- Predictable memory usage
+- Thread-safe
+- Efficient bounded queue
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Fixed capacity
+- Less flexible than linked queues
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Producer-consumer systems
+- Thread pools
+- Controlled task processing
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Fixed-size blocking queue
+- Array-based
+- Thread-safe
+- Producer waits if full
+- Consumer waits if empty
+
+--------------------------------------------------
+
+# My Understanding
+
+ArrayBlockingQueue controls memory usage while safely coordinating producer and consumer threads.

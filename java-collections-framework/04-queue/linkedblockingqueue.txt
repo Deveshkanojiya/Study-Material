@@ -1,0 +1,92 @@
+==================================================
+LINKEDBLOCKINGQUEUE
+==================================================
+
+# What problem does it solve?
+
+LinkedBlockingQueue provides:
+- thread safety
+- blocking behavior
+- flexible capacity
+
+Main focus:
+Scalable producer-consumer systems.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+Linked nodes.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+If queue empty:
+consumer waits.
+
+If queue full:
+producer waits.
+
+--------------------------------------------------
+
+# Capacity
+
+Can be:
+- bounded
+OR
+- effectively unbounded
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Designed for concurrent environments.
+
+--------------------------------------------------
+
+# Time Complexity
+
+Insertion/removal:
+O(1)
+
+--------------------------------------------------
+
+# Advantages
+
+- Flexible size
+- Good concurrency support
+- Thread-safe
+
+--------------------------------------------------
+
+# Disadvantages
+
+- More memory overhead than array-based queue
+- Node allocations required
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Messaging systems
+- Backend job processing
+- Asynchronous systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Linked-node based blocking queue
+- Thread-safe
+- Supports producer-consumer pattern
+- More flexible than ArrayBlockingQueue
+
+--------------------------------------------------
+
+# My Understanding
+
+LinkedBlockingQueue trades extra memory for flexible scalable blocking queue behavior.

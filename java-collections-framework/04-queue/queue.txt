@@ -1,0 +1,97 @@
+==================================================
+QUEUE
+==================================================
+
+# What problem does it solve?
+
+Queue processes elements in FIFO order.
+
+FIFO:
+First In First Out.
+
+Main focus:
+Sequential processing.
+
+--------------------------------------------------
+
+# Real-Life Analogy
+
+Ticket counter queue.
+
+First person entering:
+first person leaving.
+
+--------------------------------------------------
+
+# FIFO Example
+
+10 -> 20 -> 30
+
+Removal order:
+10 -> 20 -> 30
+
+--------------------------------------------------
+
+# Core Operations
+
+add()    -> insert element
+poll()   -> remove front element
+peek()   -> view front element
+
+--------------------------------------------------
+
+# Internal Working
+
+Queue is an interface.
+
+Common implementations:
+- LinkedList
+- ArrayDeque
+- PriorityQueue
+
+--------------------------------------------------
+
+# Time Complexity
+
+Insertion/removal from ends:
+O(1)
+
+Depends on implementation.
+
+--------------------------------------------------
+
+# Advantages
+
+- Ordered processing
+- Efficient front removal
+- Useful for task handling
+
+--------------------------------------------------
+
+# Disadvantages
+
+- No random access
+- FIFO may not fit every use-case
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Task queues
+- Request processing
+- Message handling
+- Producer-consumer systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Queue follows FIFO
+- Queue is interface
+- Different implementations provide different tradeoffs
+
+--------------------------------------------------
+
+# My Understanding
+
+Queue focuses on processing data in arrival order.

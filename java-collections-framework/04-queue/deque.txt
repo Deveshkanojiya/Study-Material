@@ -1,0 +1,91 @@
+==================================================
+DEQUE
+==================================================
+
+# What problem does it solve?
+
+Deque allows insertion/removal from both ends.
+
+Deque:
+Double Ended Queue.
+
+--------------------------------------------------
+
+# Core Idea
+
+Both sides usable.
+
+Front and back operations possible.
+
+--------------------------------------------------
+
+# Example
+
+<- 10 20 30 ->
+
+Can:
+- add/remove front
+- add/remove back
+
+--------------------------------------------------
+
+# Core Operations
+
+addFirst()
+addLast()
+
+removeFirst()
+removeLast()
+
+--------------------------------------------------
+
+# Internal Working
+
+Deque is an interface.
+
+Common implementations:
+- ArrayDeque
+- LinkedList
+
+--------------------------------------------------
+
+# Behavior
+
+Can behave like:
+- Queue (FIFO)
+- Stack (LIFO)
+
+--------------------------------------------------
+
+# Advantages
+
+- Flexible operations
+- Queue + Stack behavior in one structure
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Slightly more complex than normal queue
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Sliding window problems
+- Undo/redo systems
+- Queue + stack hybrid processing
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Deque means Double Ended Queue
+- Both-end operations allowed
+- Can behave as stack and queue
+
+--------------------------------------------------
+
+# My Understanding
+
+Deque is a flexible structure where both front and back are active.

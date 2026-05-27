@@ -1,0 +1,95 @@
+==================================================
+INTERMEDIATE OPERATIONS
+==================================================
+
+# What are Intermediate Operations?
+
+Operations that transform stream and return another stream.
+
+--------------------------------------------------
+
+# Important Property
+
+Intermediate operations are:
+LAZY.
+
+They do not execute immediately.
+
+Execution starts only after terminal operation.
+
+--------------------------------------------------
+
+# Common Intermediate Operations
+
+filter()
+map()
+sorted()
+distinct()
+limit()
+skip()
+
+--------------------------------------------------
+
+# filter()
+
+Keeps/removes elements based on condition.
+
+Example:
+
+.filter(n -> n % 2 == 0)
+
+--------------------------------------------------
+
+# map()
+
+Transforms elements.
+
+Example:
+
+.map(n -> n * 2)
+
+--------------------------------------------------
+
+# sorted()
+
+Sorts stream elements.
+
+--------------------------------------------------
+
+# distinct()
+
+Removes duplicates.
+
+--------------------------------------------------
+
+# limit()
+
+Restricts number of elements.
+
+--------------------------------------------------
+
+# skip()
+
+Skips initial elements.
+
+--------------------------------------------------
+
+# Advantages
+
+- Supports chaining
+- Cleaner transformations
+- Efficient lazy processing
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Intermediate operations return Stream
+- Intermediate operations are lazy
+- No execution without terminal operation
+
+--------------------------------------------------
+
+# My Understanding
+
+Intermediate operations build transformation pipeline but actual execution happens later.

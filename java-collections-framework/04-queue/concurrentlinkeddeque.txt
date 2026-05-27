@@ -1,0 +1,89 @@
+==================================================
+CONCURRENTLINKEDDEQUE
+==================================================
+
+# What problem does it solve?
+
+ConcurrentLinkedDeque provides:
+- thread-safe deque operations
+- high concurrency
+- non-blocking access
+
+Main focus:
+Concurrent double-ended operations.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+Linked nodes.
+
+Supports:
+front + back concurrent operations.
+
+--------------------------------------------------
+
+# Deque Behavior
+
+Can:
+- add/remove front
+- add/remove back
+
+--------------------------------------------------
+
+# Concurrency
+
+Multiple threads can safely operate simultaneously.
+
+--------------------------------------------------
+
+# Blocking Behavior
+
+NON-blocking.
+
+--------------------------------------------------
+
+# Thread Safety
+
+Thread-safe.
+
+Optimized for concurrent access.
+
+--------------------------------------------------
+
+# Advantages
+
+- Both-end operations
+- Thread-safe
+- Good concurrent scalability
+
+--------------------------------------------------
+
+# Disadvantages
+
+- Internally complex
+- More memory usage
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Concurrent work-stealing systems
+- Parallel task processing
+- Concurrent queue/stack systems
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Concurrent deque implementation
+- Thread-safe
+- Non-blocking
+- Supports both-end operations
+
+--------------------------------------------------
+
+# My Understanding
+
+ConcurrentLinkedDeque combines deque flexibility with scalable concurrent access.

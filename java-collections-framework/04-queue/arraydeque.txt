@@ -1,0 +1,110 @@
+==================================================
+ARRAYDEQUE
+==================================================
+
+# What problem does it solve?
+
+ArrayDeque provides fast stack and queue operations.
+
+Main focus:
+Modern efficient deque implementation.
+
+--------------------------------------------------
+
+# Internal Working
+
+Internally uses:
+Resizable array.
+
+Supports:
+- Queue behavior
+- Stack behavior
+
+--------------------------------------------------
+
+# Queue Behavior
+
+FIFO operations possible.
+
+Example:
+
+addLast()
+removeFirst()
+
+--------------------------------------------------
+
+# Stack Behavior
+
+LIFO operations possible.
+
+Example:
+
+push()
+pop()
+
+--------------------------------------------------
+
+# Why Preferred?
+
+Usually preferred over:
+- Stack
+- LinkedList queue usage
+
+Because:
+- faster
+- cache friendly
+- lower overhead
+
+--------------------------------------------------
+
+# Null Handling
+
+ArrayDeque does NOT allow null values.
+
+--------------------------------------------------
+
+# Time Complexity
+
+Insertion/removal at ends:
+O(1)
+
+Resizing occasionally:
+O(n)
+
+--------------------------------------------------
+
+# Advantages
+
+- Fast
+- Memory efficient
+- Queue + stack support
+
+--------------------------------------------------
+
+# Disadvantages
+
+- No random access
+- No null elements
+
+--------------------------------------------------
+
+# Backend Use-Cases
+
+- Stack replacement
+- Queue systems
+- Sliding window algorithms
+
+--------------------------------------------------
+
+# Important Interview Points
+
+- Implements Deque
+- Array-based
+- Preferred over Stack
+- Supports FIFO and LIFO
+
+--------------------------------------------------
+
+# My Understanding
+
+ArrayDeque is a modern flexible structure that efficiently works as both queue and stack.
