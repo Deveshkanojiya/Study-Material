@@ -1,0 +1,233 @@
+==================================================
+APPLICATION.PROPERTIES
+==================================================
+
+# What is application.properties?
+
+It is the default configuration file of a Spring Boot application.
+
+Used to store application settings.
+
+--------------------------------------------------
+
+# Common Configurations
+
+Server Port
+
+Database URL
+
+Username
+
+Password
+
+Logging Level
+
+JWT Secret
+
+Application Name
+
+--------------------------------------------------
+
+# Example
+
+server.port=8081
+
+spring.application.name=JournalApp
+
+--------------------------------------------------
+
+# Why?
+
+Keeps configuration separate from Java code.
+
+Easy to modify without changing source code.
+
+==================================================
+APPLICATION.YML
+==================================================
+
+# What is application.yml?
+
+Alternative to application.properties.
+
+Provides the same functionality but with cleaner hierarchical syntax.
+
+--------------------------------------------------
+
+Properties
+
+server.port=8080
+
+----------------------
+
+YAML
+
+server:
+  port: 8080
+
+--------------------------------------------------
+
+# Which one should I use?
+
+Both are correct.
+
+Large projects usually prefer YAML because it is easier to read.
+
+==================================================
+PROFILES
+==================================================
+
+# Why Profiles?
+
+Different environments require different configurations.
+
+Development
+
+Testing
+
+Production
+
+--------------------------------------------------
+
+Example
+
+application-dev.properties
+
+application-test.properties
+
+application-prod.properties
+
+--------------------------------------------------
+
+Active Profile
+
+spring.profiles.active=dev
+
+--------------------------------------------------
+
+Interview
+
+Profiles allow environment-specific configuration.
+
+==================================================
+@ConfigurationProperties
+==================================================
+
+# Purpose
+
+Maps multiple configuration values into a Java object.
+
+--------------------------------------------------
+
+Without It
+
+Read every property individually.
+
+--------------------------------------------------
+
+With It
+
+Read an entire configuration class at once.
+
+--------------------------------------------------
+
+Best For
+
+Database Configuration
+
+JWT Configuration
+
+Mail Configuration
+
+Cloud Configuration
+
+==================================================
+@Value
+==================================================
+
+# Purpose
+
+Reads a single value from configuration.
+
+--------------------------------------------------
+
+Example
+
+@Value("${server.port}")
+
+--------------------------------------------------
+
+Use When
+
+Only one or two values are required.
+
+==================================================
+PROPERTIES LOADING FLOW
+==================================================
+
+Application Starts
+
+↓
+
+Reads application.properties
+
+↓
+
+Loads Active Profile
+
+↓
+
+Creates Configuration
+
+↓
+
+Injects Values
+
+↓
+
+Application Ready
+
+==================================================
+INTERVIEW POINTS
+==================================================
+
+Difference between
+
+application.properties
+
+and
+
+application.yml
+
+----------------------
+
+Difference between
+
+@Value
+
+and
+
+@ConfigurationProperties
+
+----------------------
+
+How do Profiles work?
+
+----------------------
+
+How does Spring read configuration files?
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+Configuration files keep application settings outside the code.
+
+Profiles allow different configurations for different environments.
+
+@Value is useful for single values while
+@ConfigurationProperties is better for grouped configurations.
+
+==================================================
+END OF CONFIGURATION
+==================================================

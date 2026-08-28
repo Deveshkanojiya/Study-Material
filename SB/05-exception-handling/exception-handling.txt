@@ -1,0 +1,264 @@
+==================================================
+EXCEPTION HANDLING
+==================================================
+
+# What is Exception Handling?
+
+Exception Handling is the process of handling runtime errors gracefully
+without crashing the application.
+
+Instead of exposing stack traces,
+APIs return meaningful error responses.
+
+--------------------------------------------------
+
+# Why Exception Handling?
+
+Prevents Application Crash
+
+Improves User Experience
+
+Returns Proper HTTP Status Codes
+
+Provides Consistent Error Responses
+
+==================================================
+EXCEPTION FLOW
+==================================================
+
+Client Request
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Exception Occurs
+
+↓
+
+Global Exception Handler
+
+↓
+
+Error Response
+
+↓
+
+Client
+
+==================================================
+COMMON EXCEPTIONS
+==================================================
+
+Resource Not Found
+
+----------------------
+
+Validation Failed
+
+----------------------
+
+Duplicate Resource
+
+----------------------
+
+Authentication Failed
+
+----------------------
+
+Access Denied
+
+----------------------
+
+Database Exception
+
+==================================================
+@ControllerAdvice
+==================================================
+
+# Purpose
+
+Provides Global Exception Handling.
+
+Instead of handling exceptions in every controller,
+Spring handles them from one central place.
+
+--------------------------------------------------
+
+Benefits
+
+Cleaner Controllers
+
+Reusable Exception Logic
+
+Consistent API Responses
+
+==================================================
+@ExceptionHandler
+==================================================
+
+# Purpose
+
+Handles a specific exception.
+
+Example
+
+ResourceNotFoundException
+
+↓
+
+404 NOT FOUND
+
+--------------------------------------------------
+
+One handler
+
+↓
+
+One Exception Type
+
+==================================================
+CUSTOM EXCEPTIONS
+==================================================
+
+# Why?
+
+Java exceptions don't always describe business problems.
+
+Example
+
+User Not Found
+
+Product Out Of Stock
+
+Insufficient Balance
+
+Order Already Cancelled
+
+--------------------------------------------------
+
+Creating custom exceptions makes APIs easier to understand.
+
+==================================================
+ERROR RESPONSE
+==================================================
+
+A good error response should contain
+
+Timestamp
+
+Status Code
+
+Error
+
+Message
+
+Path
+
+--------------------------------------------------
+
+Example
+
+Status : 404
+
+Message : User not found
+
+Path : /users/10
+
+==================================================
+HTTP STATUS MAPPING
+==================================================
+
+400
+
+Bad Request
+
+----------------------
+
+401
+
+Unauthorized
+
+----------------------
+
+403
+
+Forbidden
+
+----------------------
+
+404
+
+Not Found
+
+----------------------
+
+409
+
+Conflict
+
+----------------------
+
+500
+
+Internal Server Error
+
+==================================================
+INTERVIEW POINTS
+==================================================
+
+Difference between
+
+@ControllerAdvice
+
+and
+
+@ExceptionHandler
+
+----------------------
+
+Why use Global Exception Handling?
+
+----------------------
+
+Why create Custom Exceptions?
+
+----------------------
+
+Should stack traces be returned to clients?
+
+No.
+
+==================================================
+COMMON MISTAKES
+==================================================
+
+Using try-catch in every controller.
+
+----------------------
+
+Returning HTTP 200 for errors.
+
+----------------------
+
+Sending Internal Exception Messages to clients.
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+Exception Handling makes APIs predictable.
+
+Instead of exposing Java errors,
+Spring converts exceptions into meaningful HTTP responses that clients
+can understand.
+
+==================================================
+END OF EXCEPTION HANDLING
+==================================================

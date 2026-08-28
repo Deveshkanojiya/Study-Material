@@ -1,0 +1,585 @@
+==================================================
+IOC (INVERSION OF CONTROL)
+==================================================
+
+# Why do we need IoC?
+
+Without Spring
+
+Developer creates every object manually.
+
+Example
+
+UserService service = new UserService();
+
+UserRepository repo = new UserRepository();
+
+As the project grows, object creation and dependency management become
+difficult.
+
+IoC solves this problem.
+
+--------------------------------------------------
+
+# What is IoC?
+
+IoC (Inversion of Control) means the control of creating and managing
+objects is transferred from the developer to the Spring Framework.
+
+Instead of creating objects manually,
+Spring creates and manages them.
+
+--------------------------------------------------
+
+# Internal Working
+
+Application Starts
+
+↓
+
+IOC Container Starts
+
+↓
+
+Scans Classes
+
+↓
+
+Creates Required Objects (Beans)
+
+↓
+
+Stores Them
+
+↓
+
+Provides Objects Whenever Needed
+
+--------------------------------------------------
+
+# Benefits
+
+No manual object creation
+
+Loose Coupling
+
+Easy Testing
+
+Better Maintainability
+
+--------------------------------------------------
+
+# Interview Points
+
+Who creates objects in Spring?
+
+IOC Container.
+
+----------------------
+
+Does IoC create every object?
+
+No.
+
+Only Spring Managed Beans.
+
+--------------------------------------------------
+
+# My Understanding
+
+IoC simply means I don't create important objects manually.
+Spring creates, stores and manages them for me.
+
+==================================================
+DEPENDENCY INJECTION (DI)
+==================================================
+
+# Why do we need DI?
+
+Objects often depend on other objects.
+
+Example
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+Without DI, we create these dependencies manually.
+
+DI lets Spring inject them automatically.
+
+--------------------------------------------------
+
+# What is Dependency Injection?
+
+Dependency Injection is the process where Spring provides the required
+dependency instead of the developer creating it.
+
+--------------------------------------------------
+
+# Internal Working
+
+IOC Container
+
+↓
+
+Creates Repository
+
+↓
+
+Creates Service
+
+↓
+
+Injects Repository into Service
+
+↓
+
+Creates Controller
+
+↓
+
+Injects Service into Controller
+
+--------------------------------------------------
+
+# Types of DI
+
+Constructor Injection ✅ (Recommended)
+
+Setter Injection
+
+Field Injection (@Autowired)
+
+--------------------------------------------------
+
+# Why Constructor Injection?
+
+Mandatory dependencies
+
+Immutable objects
+
+Easy testing
+
+Recommended by Spring Team
+
+--------------------------------------------------
+
+# Interview Points
+
+Difference between IoC and DI?
+
+IoC = Principle
+
+DI = One implementation of IoC
+
+--------------------------------------------------
+
+# My Understanding
+
+IoC manages objects.
+
+DI connects those objects together.
+
+==================================================
+BEANS
+==================================================
+
+# What is a Bean?
+
+A Bean is simply an object managed by the Spring IOC Container.
+
+Not every object is a Bean.
+
+Only Spring Managed Objects are Beans.
+
+--------------------------------------------------
+
+# Example
+
+@Service
+
+class UserService {}
+
+UserService becomes a Bean.
+
+--------------------------------------------------
+
+# Bean Lifecycle (High Level)
+
+Create Bean
+
+↓
+
+Initialize Bean
+
+↓
+
+Ready to Use
+
+↓
+
+Destroy Bean
+
+--------------------------------------------------
+
+# Bean Scope (Important)
+
+Singleton (Default)
+
+One object for entire application.
+
+----------------------
+
+Prototype
+
+New object every request.
+
+--------------------------------------------------
+
+# Interview Points
+
+Is every Java object a Bean?
+
+No.
+
+Only objects managed by Spring.
+
+--------------------------------------------------
+
+# My Understanding
+
+Bean = Normal Object + Managed by Spring.
+
+==================================================
+BEAN LIFECYCLE
+==================================================
+
+# High Level Flow
+
+Instantiate Bean
+
+↓
+
+Inject Dependencies
+
+↓
+
+@PostConstruct
+
+↓
+
+Ready to Use
+
+↓
+
+Application Running
+
+↓
+
+@PreDestroy
+
+↓
+
+Bean Destroyed
+
+--------------------------------------------------
+
+# Important Annotations
+
+@PostConstruct
+
+Runs after Bean creation.
+
+----------------------
+
+@PreDestroy
+
+Runs before Bean destruction.
+
+--------------------------------------------------
+
+# Interview Points
+
+When does @PostConstruct execute?
+
+Immediately after dependency injection.
+
+==================================================
+COMPONENT SCAN
+==================================================
+
+# What is Component Scan?
+
+Spring automatically scans packages and finds classes that should become
+Beans.
+
+--------------------------------------------------
+
+# How?
+
+It looks for annotations like
+
+@Component
+
+@Service
+
+@Repository
+
+@Controller
+
+@RestController
+
+--------------------------------------------------
+
+# Internal Working
+
+Application Starts
+
+↓
+
+Component Scan
+
+↓
+
+Find Annotated Classes
+
+↓
+
+Create Beans
+
+↓
+
+Store in IOC Container
+
+--------------------------------------------------
+
+# Interview Points
+
+Can Spring create a Bean without scanning?
+
+Yes.
+
+Using @Bean inside a @Configuration class.
+
+==================================================
+STEREOTYPE ANNOTATIONS
+==================================================
+
+# @Component
+
+Generic Spring Bean.
+
+--------------------------------------------------
+
+# @Service
+
+Business Logic.
+
+--------------------------------------------------
+
+# @Repository
+
+Database Layer.
+
+Also translates database exceptions.
+
+--------------------------------------------------
+
+# @Controller
+
+Returns Views (MVC).
+
+--------------------------------------------------
+
+# @RestController
+
+Returns JSON Response.
+
+@Controller + @ResponseBody
+
+--------------------------------------------------
+
+# My Understanding
+
+All create Beans.
+
+Difference is only their responsibility.
+
+==================================================
+@Autowired
+==================================================
+
+# Purpose
+
+Automatically injects dependencies.
+
+--------------------------------------------------
+
+Example
+
+@Autowired
+
+private UserService service;
+
+Spring finds the Bean and injects it.
+
+--------------------------------------------------
+
+# Interview Points
+
+@Autowired works by Type.
+
+If multiple Beans exist,
+
+Spring becomes confused.
+
+Use
+
+@Qualifier
+
+or
+
+@Primary
+
+==================================================
+@QUALIFIER
+==================================================
+
+# Why?
+
+Multiple Beans of same type.
+
+Spring doesn't know which one to inject.
+
+--------------------------------------------------
+
+Solution
+
+@Qualifier("beanName")
+
+Tells Spring exactly which Bean to inject.
+
+--------------------------------------------------
+
+# Interview Points
+
+When do we use @Qualifier?
+
+Whenever multiple Beans of same type exist.
+
+==================================================
+@PRIMARY
+==================================================
+
+# Purpose
+
+Marks one Bean as the default Bean.
+
+--------------------------------------------------
+
+If multiple Beans exist,
+
+Spring injects the @Primary Bean unless a @Qualifier is used.
+
+--------------------------------------------------
+
+Priority
+
+@Qualifier
+
+↓
+
+@Primary
+
+==================================================
+@Configuration & @Bean
+==================================================
+
+# @Configuration
+
+Marks a class as a configuration class.
+
+--------------------------------------------------
+
+# @Bean
+
+Used to create Beans manually.
+
+Useful when
+
+Source code cannot be modified
+
+Third-party classes
+
+Custom configuration
+
+--------------------------------------------------
+
+Example Flow
+
+@Configuration
+
+↓
+
+@Bean
+
+↓
+
+Spring creates Bean
+
+↓
+
+Stores in IOC Container
+
+--------------------------------------------------
+
+# Interview Points
+
+Difference between @Component and @Bean?
+
+@Component
+
+Spring creates Bean by scanning.
+
+----------------------
+
+@Bean
+
+Developer explicitly tells Spring to create the Bean.
+
+--------------------------------------------------
+
+# FINAL FLOW
+
+Application Starts
+
+↓
+
+Component Scan
+
+↓
+
+IOC Container
+
+↓
+
+Create Beans
+
+↓
+
+Inject Dependencies
+
+↓
+
+Application Ready
+
+==================================================
+END OF IOC-DI
+==================================================

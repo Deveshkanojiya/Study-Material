@@ -1,0 +1,825 @@
+==================================================
+SPRING FRAMEWORK VS SPRING BOOT
+==================================================
+
+# Why Spring?
+
+Building enterprise Java applications from scratch is difficult.
+
+Problems:
+
+- Object creation
+- Dependency management
+- Database integration
+- Security
+- Transactions
+- Boilerplate code
+
+Spring Framework solves these problems.
+
+--------------------------------------------------
+
+# Spring Framework
+
+Spring Framework is a Java framework that provides modules to build
+enterprise applications.
+
+Some major modules:
+
+- Spring Core
+- Spring MVC
+- Spring Data
+- Spring Security
+- Spring AOP
+
+Spring gives flexibility but requires configuration.
+
+--------------------------------------------------
+
+# Spring Boot
+
+Spring Boot is built on top of Spring Framework.
+
+Goal:
+
+Reduce configuration and let developers focus on business logic.
+
+Instead of configuring everything manually,
+Spring Boot provides sensible defaults.
+
+--------------------------------------------------
+
+# Spring Framework vs Spring Boot
+
+Spring Framework
+
+- More configuration
+- External server
+- Manual dependency management
+- Slower setup
+
+Spring Boot
+
+- Auto Configuration
+- Embedded Tomcat
+- Starter Dependencies
+- Faster development
+
+--------------------------------------------------
+
+# Interview Points
+
+Q. Is Spring Boot another framework?
+
+No.
+
+Spring Boot is built on top of Spring Framework.
+
+-----------------------------------------------
+
+Q. Does Spring Boot replace Spring?
+
+No.
+
+Spring Boot simplifies Spring.
+
+--------------------------------------------------
+
+# My Understanding
+
+Spring Boot is simply a faster and smarter way of building Spring
+applications.
+
+It removes repetitive configuration so developers can focus on writing
+business logic.
+
+==================================================
+SPRING INITIALIZR
+==================================================
+
+Spring Initializr is the official project generator for Spring Boot.
+
+It creates a ready-to-run project with the required dependencies and
+folder structure.
+
+Developer selects:
+
+- Project Type
+- Java Version
+- Spring Boot Version
+- Dependencies
+
+↓
+
+Download ZIP
+
+↓
+
+Start Coding
+
+--------------------------------------------------
+
+# Why use it?
+
+Without Initializr you would need to manually
+
+- create Maven project
+- configure Spring
+- add dependencies
+- setup project structure
+
+--------------------------------------------------
+
+# Interview Points
+
+Q. Can we create a Spring Boot project without Spring Initializr?
+
+Yes.
+
+Spring Initializr only automates project creation.
+
+--------------------------------------------------
+
+# My Understanding
+
+Spring Initializr saves setup time.
+
+Nothing magical happens.
+It simply generates the project for us.
+
+==================================================
+MAVEN
+==================================================
+
+Maven is a Build Tool.
+
+It automates
+
+- dependency management
+- compilation
+- testing
+- packaging
+
+--------------------------------------------------
+
+# Internal Working
+
+Dependency
+
+↓
+
+pom.xml
+
+↓
+
+Maven
+
+↓
+
+Local Repository
+
+↓
+
+Maven Central (if required)
+
+↓
+
+Downloaded
+
+↓
+
+Project Ready
+
+--------------------------------------------------
+
+# Common Commands
+
+mvn clean
+
+Deletes previous build.
+
+----------------------
+
+mvn compile
+
+Compiles source code.
+
+----------------------
+
+mvn test
+
+Runs test cases.
+
+----------------------
+
+mvn package
+
+Creates JAR/WAR.
+
+----------------------
+
+mvn clean install
+
+Most commonly used command.
+
+--------------------------------------------------
+
+# Interview Points
+
+Difference between Maven and Gradle
+
+What is Maven Central?
+
+What is Local Repository?
+
+--------------------------------------------------
+
+# My Understanding
+
+Maven automates everything required to build a Java project.
+
+==================================================
+POM.XML
+==================================================
+
+POM = Project Object Model
+
+pom.xml is the brain of a Maven project.
+
+Everything Maven needs is defined here.
+
+--------------------------------------------------
+
+# Important Tags
+
+groupId
+
+Organization
+
+----------------------
+
+artifactId
+
+Project Name
+
+----------------------
+
+version
+
+Project Version
+
+----------------------
+
+dependencies
+
+External Libraries
+
+----------------------
+
+build
+
+Plugins
+
+--------------------------------------------------
+
+# Dependency Scope
+
+compile
+
+Default
+
+----------------------
+
+runtime
+
+Needed while running
+
+----------------------
+
+test
+
+JUnit
+
+Mockito
+
+----------------------
+
+provided
+
+Provided externally
+
+--------------------------------------------------
+
+# Interview Points
+
+Difference between groupId and artifactId
+
+What is spring-boot-starter-parent?
+
+Where are dependencies downloaded?
+
+--------------------------------------------------
+
+# My Understanding
+
+pom.xml tells Maven how the project should be built.
+
+==================================================
+PROJECT STRUCTURE
+==================================================
+
+Important folders
+
+src/main/java
+
+Application code
+
+----------------------
+
+src/main/resources
+
+Configuration
+
+application.properties
+
+Static resources
+
+----------------------
+
+src/test
+
+Testing
+
+--------------------------------------------------
+
+# Common Packages
+
+controller
+
+↓
+
+service
+
+↓
+
+repository
+
+↓
+
+database
+
+--------------------------------------------------
+
+entity
+
+Database Tables
+
+----------------------
+
+dto
+
+Data Transfer Objects
+
+----------------------
+
+config
+
+Configuration
+
+----------------------
+
+security
+
+Authentication
+
+--------------------------------------------------
+
+# Request Flow
+
+Client
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+↓
+
+Database
+
+↓
+
+Response
+
+--------------------------------------------------
+
+# Interview Points
+
+Why Layered Architecture?
+
+Why DTO?
+
+Why not database access directly from Controller?
+
+--------------------------------------------------
+
+# My Understanding
+
+Every package has one responsibility.
+
+This separation makes projects scalable and maintainable.
+
+==================================================
+STARTER DEPENDENCIES
+==================================================
+
+# What are Starter Dependencies?
+
+Starter Dependencies are pre-configured dependency bundles provided by
+Spring Boot.
+
+Instead of adding multiple libraries manually, we add one starter.
+
+Spring Boot automatically pulls all required dependencies.
+
+--------------------------------------------------
+
+# Why do we need them?
+
+Without Starters
+
+Need to find every required library
+
+Need compatible versions
+
+Need to manage conflicts
+
+Need manual updates
+
+With Starters
+
+One dependency
+
+↓
+
+Everything automatically downloaded
+
+--------------------------------------------------
+
+# Internal Working
+
+Developer
+
+↓
+
+Adds Starter
+
+↓
+
+pom.xml
+
+↓
+
+Maven
+
+↓
+
+Spring Boot resolves dependencies
+
+↓
+
+Downloads compatible versions
+
+↓
+
+Project Ready
+
+--------------------------------------------------
+
+# Common Starters
+
+spring-boot-starter-web
+
+REST APIs
+
+Embedded Tomcat
+
+Spring MVC
+
+JSON Support
+
+----------------------
+
+spring-boot-starter-data-jpa
+
+Hibernate
+
+JPA
+
+Database Support
+
+----------------------
+
+spring-boot-starter-security
+
+Authentication
+
+Authorization
+
+Security Filters
+
+----------------------
+
+spring-boot-starter-validation
+
+Bean Validation
+
+----------------------
+
+spring-boot-starter-test
+
+JUnit
+
+Mockito
+
+Spring Test
+
+--------------------------------------------------
+
+# Why are Starters useful?
+
+No version conflicts
+
+Less configuration
+
+Officially maintained
+
+Easy dependency management
+
+--------------------------------------------------
+
+# Interview Points
+
+Q. What is a Starter Dependency?
+
+Q. Difference between dependency and starter?
+
+Q. Why use starter-web instead of adding Tomcat manually?
+
+--------------------------------------------------
+
+# My Understanding
+
+Starter Dependencies are bundles of compatible libraries maintained by
+Spring Boot.
+
+Instead of managing dozens of dependencies, developers add a single
+starter and Spring Boot handles the rest.
+
+==================================================
+SPRING BOOT ARCHITECTURE
+==================================================
+
+# High Level Flow
+
+Application Starts
+
+↓
+
+@SpringBootApplication
+
+↓
+
+Auto Configuration
+
+↓
+
+Component Scan
+
+↓
+
+IOC Container
+
+↓
+
+Beans Created
+
+↓
+
+Embedded Server Starts
+
+↓
+
+Application Ready
+
+--------------------------------------------------
+
+# Main Components
+
+Application
+
+↓
+
+Spring Boot
+
+↓
+
+Spring Framework
+
+↓
+
+Embedded Server
+
+↓
+
+Application Runs
+
+--------------------------------------------------
+
+# Important Parts
+
+@SpringBootApplication
+
+Entry Point
+
+----------------------
+
+IOC Container
+
+Manages Objects
+
+----------------------
+
+Beans
+
+Objects managed by Spring
+
+----------------------
+
+Auto Configuration
+
+Automatic Configuration
+
+----------------------
+
+Embedded Tomcat
+
+Runs application
+
+--------------------------------------------------
+
+# Why is Architecture Important?
+
+Helps understand
+
+How Spring starts
+
+Where Beans are created
+
+How dependencies are injected
+
+Why application starts automatically
+
+--------------------------------------------------
+
+# Interview Points
+
+Explain Spring Boot startup flow.
+
+What happens after running main()?
+
+How does Embedded Tomcat start?
+
+--------------------------------------------------
+
+# My Understanding
+
+Spring Boot follows a startup sequence where it prepares the framework,
+creates required beans and starts the embedded server before accepting
+requests.
+
+==================================================
+AUTO CONFIGURATION
+==================================================
+
+# What is Auto Configuration?
+
+Auto Configuration automatically configures Spring Boot based on the
+dependencies present in the project.
+
+No manual configuration is required in most cases.
+
+--------------------------------------------------
+
+# Example
+
+Added
+
+spring-boot-starter-web
+
+↓
+
+Spring Boot automatically configures
+
+Dispatcher Servlet
+
+Tomcat
+
+Jackson
+
+Spring MVC
+
+Error Handling
+
+Without writing configuration code.
+
+--------------------------------------------------
+
+# Internal Working
+
+Application Starts
+
+↓
+
+Reads pom.xml
+
+↓
+
+Checks Dependencies
+
+↓
+
+Loads matching Configuration Classes
+
+↓
+
+Creates Required Beans
+
+↓
+
+Application Ready
+
+--------------------------------------------------
+
+# Why is Auto Configuration useful?
+
+Less Boilerplate
+
+Faster Development
+
+Sensible Defaults
+
+Production Ready Setup
+
+--------------------------------------------------
+
+# Can we override it?
+
+Yes.
+
+Spring Boot provides defaults.
+
+Developers can override them whenever required.
+
+--------------------------------------------------
+
+# Interview Points
+
+What is Auto Configuration?
+
+How does Spring Boot know what to configure?
+
+Can Auto Configuration be disabled or overridden?
+
+--------------------------------------------------
+
+# Common Mistake
+
+Thinking Auto Configuration means "magic".
+
+Wrong.
+
+Spring Boot checks available dependencies and loads predefined
+configuration classes.
+
+Nothing happens randomly.
+
+--------------------------------------------------
+
+# My Understanding
+
+Auto Configuration is the biggest reason Spring Boot became popular.
+
+Instead of manually configuring every framework, Spring Boot detects
+project requirements and configures most things automatically.
+
+==================================================
+END OF INTRODUCTION
+==================================================

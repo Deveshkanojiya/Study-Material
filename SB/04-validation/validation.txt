@@ -1,0 +1,232 @@
+==================================================
+VALIDATION
+==================================================
+
+# What is Validation?
+
+Validation ensures that incoming data is correct before processing it.
+
+It prevents invalid data from reaching the business logic or database.
+
+--------------------------------------------------
+
+# Why Validation?
+
+Improves Data Integrity
+
+Prevents Invalid Input
+
+Reduces Bugs
+
+Improves API Reliability
+
+==================================================
+VALIDATION FLOW
+==================================================
+
+Client Request
+
+↓
+
+@RequestBody
+
+↓
+
+Validation
+
+↓
+
+Valid Data
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Database
+
+----------------------
+
+Invalid Data
+
+↓
+
+400 Bad Request
+
+==================================================
+COMMON VALIDATION ANNOTATIONS
+==================================================
+
+@NotNull
+
+Value cannot be null.
+
+----------------------
+
+@NotBlank
+
+String cannot be null, empty or only spaces.
+
+----------------------
+
+@NotEmpty
+
+Collection/String cannot be empty.
+
+----------------------
+
+@Size
+
+Minimum and Maximum length.
+
+----------------------
+
+@Min
+
+Minimum numeric value.
+
+----------------------
+
+@Max
+
+Maximum numeric value.
+
+----------------------
+
+@Positive
+
+Value must be greater than zero.
+
+----------------------
+
+@Negative
+
+Value must be less than zero.
+
+----------------------
+
+@Email
+
+Checks email format.
+
+----------------------
+
+@Pattern
+
+Validates using Regular Expression.
+
+==================================================
+@VALID
+==================================================
+
+# Purpose
+
+Triggers validation before the request reaches business logic.
+
+Without @Valid,
+
+validation annotations are ignored.
+
+--------------------------------------------------
+
+Flow
+
+Client
+
+↓
+
+@RequestBody
+
+↓
+
+@Valid
+
+↓
+
+Validation
+
+↓
+
+Controller
+
+==================================================
+CUSTOM VALIDATION
+==================================================
+
+# Why?
+
+Built-in annotations are not always enough.
+
+Sometimes business rules need custom validation.
+
+Example
+
+Age must be greater than 18
+
+Password must contain
+
+Uppercase
+
+Lowercase
+
+Number
+
+Special Character
+
+--------------------------------------------------
+
+Custom validation allows these rules.
+
+==================================================
+INTERVIEW POINTS
+==================================================
+
+Difference between
+
+@NotNull
+
+@NotBlank
+
+@NotEmpty
+
+----------------------
+
+Why is @Valid required?
+
+----------------------
+
+Can we create our own validation annotation?
+
+Yes.
+
+==================================================
+COMMON MISTAKES
+==================================================
+
+Using @NotNull for Strings.
+
+Usually @NotBlank is a better choice.
+
+----------------------
+
+Forgetting @Valid.
+
+Validation annotations will not execute.
+
+==================================================
+MY UNDERSTANDING
+==================================================
+
+Validation is the first layer of defence in an API.
+
+Instead of allowing invalid data into the application,
+Spring validates the request first and rejects bad input immediately.
+
+==================================================
+END OF VALIDATION
+==================================================

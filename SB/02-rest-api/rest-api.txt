@@ -1,0 +1,404 @@
+==================================================
+REST
+==================================================
+
+# What is REST?
+
+REST (Representational State Transfer) is an architectural style used to
+build web APIs.
+
+Client and Server communicate using HTTP.
+
+--------------------------------------------------
+
+# Why REST?
+
+Platform Independent
+
+Stateless
+
+Simple
+
+Scalable
+
+Easy Integration
+
+--------------------------------------------------
+
+# REST Principles
+
+Client - Server
+
+Stateless
+
+Cacheable
+
+Uniform Interface
+
+Layered System
+
+--------------------------------------------------
+
+# Resource Example
+
+/users
+
+/products
+
+/orders
+
+Each resource is identified using a URL.
+
+--------------------------------------------------
+
+# Interview Points
+
+REST is an architectural style, not a protocol.
+
+==================================================
+HTTP METHODS
+==================================================
+
+GET
+
+Read Data
+
+Safe
+
+Idempotent
+
+----------------------
+
+POST
+
+Create Data
+
+Not Idempotent
+
+----------------------
+
+PUT
+
+Replace Complete Resource
+
+Idempotent
+
+----------------------
+
+PATCH
+
+Partial Update
+
+Not always Idempotent
+
+----------------------
+
+DELETE
+
+Delete Resource
+
+Idempotent
+
+--------------------------------------------------
+
+# Interview Points
+
+POST creates.
+
+PUT replaces.
+
+PATCH updates specific fields.
+
+==================================================
+@RequestMapping
+==================================================
+
+Base mapping for controllers.
+
+Can be used on
+
+Class
+
+Method
+
+--------------------------------------------------
+
+Specialized annotations
+
+@GetMapping
+
+@PostMapping
+
+@PutMapping
+
+@PatchMapping
+
+@DeleteMapping
+
+are shortcuts of @RequestMapping.
+
+--------------------------------------------------
+
+# My Understanding
+
+@RequestMapping defines the endpoint.
+
+Other annotations define both endpoint and HTTP method.
+
+==================================================
+@PathVariable
+==================================================
+
+Used to read values from URL.
+
+Example
+
+/users/{id}
+
+↓
+
+@PathVariable Long id
+
+--------------------------------------------------
+
+Use When
+
+Resource Identifier
+
+User ID
+
+Product ID
+
+Order ID
+
+==================================================
+@RequestParam
+==================================================
+
+Used to read Query Parameters.
+
+Example
+
+/users?page=1&size=10
+
+↓
+
+@RequestParam
+
+--------------------------------------------------
+
+Common Use Cases
+
+Pagination
+
+Filtering
+
+Searching
+
+Sorting
+
+==================================================
+@RequestBody
+==================================================
+
+Reads JSON from request body.
+
+Spring converts JSON
+
+↓
+
+Java Object
+
+Automatically.
+
+--------------------------------------------------
+
+Requires
+
+Jackson Library
+
+(Content comes from starter-web)
+
+--------------------------------------------------
+
+Example Flow
+
+JSON
+
+↓
+
+@RequestBody
+
+↓
+
+Java Object
+
+==================================================
+ResponseEntity
+==================================================
+
+Represents complete HTTP Response.
+
+Contains
+
+Status Code
+
+Headers
+
+Body
+
+--------------------------------------------------
+
+Why use ResponseEntity?
+
+Return proper status codes
+
+Return custom headers
+
+Better API design
+
+--------------------------------------------------
+
+Interview
+
+ResponseEntity gives complete control over HTTP response.
+
+==================================================
+HTTP STATUS CODES
+==================================================
+
+200 OK
+
+Request Successful
+
+----------------------
+
+201 CREATED
+
+Resource Created
+
+----------------------
+
+204 NO CONTENT
+
+Success without response body
+
+----------------------
+
+400 BAD REQUEST
+
+Invalid Input
+
+----------------------
+
+401 UNAUTHORIZED
+
+Authentication Required
+
+----------------------
+
+403 FORBIDDEN
+
+Authenticated but access denied
+
+----------------------
+
+404 NOT FOUND
+
+Resource Missing
+
+----------------------
+
+500 INTERNAL SERVER ERROR
+
+Unexpected Server Error
+
+--------------------------------------------------
+
+Interview Tip
+
+Use appropriate status codes.
+
+Never return 200 for every response.
+
+==================================================
+API VERSIONING
+==================================================
+
+Why?
+
+APIs change over time.
+
+Old clients should continue working.
+
+--------------------------------------------------
+
+Common Style
+
+/api/v1/users
+
+/api/v2/users
+
+--------------------------------------------------
+
+Benefits
+
+Backward Compatibility
+
+Easy Migration
+
+Multiple Versions Together
+
+==================================================
+REQUEST FLOW
+==================================================
+
+Client
+
+↓
+
+HTTP Request
+
+↓
+
+Dispatcher Servlet
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+↓
+
+Database
+
+↓
+
+Repository
+
+↓
+
+Service
+
+↓
+
+Controller
+
+↓
+
+HTTP Response
+
+↓
+
+Client
+
+==================================================
+END OF REST API
+==================================================
